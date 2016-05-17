@@ -21,12 +21,12 @@ var img;
 function preload()
 {
   // initialize variable for image
-  img = loadImage('crop.jpg');
+  img = loadImage("data/crop.jpg");
 }
 
 function setup()
 {
-  // set up size canvas 
+  // set up size canvas
   createCanvas(399, 591);
 }
 
