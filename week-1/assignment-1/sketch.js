@@ -18,20 +18,17 @@
 // declare variable for image
 var img;
 
-function preload()
-{
+function preload() {
   // initialize variable for image
   img = loadImage("data/crop.jpg");
 }
 
-function setup()
-{
+function setup() {
   // set up size canvas
   createCanvas(399, 591);
 }
 
-function draw()
-{
+function draw() {
   // background(255);
   // set up image
   image(img, 0, 0, width, height);
