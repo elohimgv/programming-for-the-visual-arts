@@ -16,15 +16,15 @@ var vertical;
 var diagonal;
 var arcSize;
 
-function setup(){
+function setup() {
   createCanvas(800, 600);
 }
 
-function draw(){
+function draw() {
   // change the values to obtain other results
-  for (vertical = 0; vertical < width; vertical += 10){
-    for (diagonal = 0; diagonal < 1600; diagonal += 20){
-      for (var rectSize = 600; rectSize > 0; rectSize -= 20){
+  for (vertical = 0; vertical < width; vertical += 10) {
+    for (diagonal = 0; diagonal < 1600; diagonal += 20) {
+      for (var rectSize = 600; rectSize > 0; rectSize -= 20) {
         stroke(160);
         line(vertical, 0, vertical, 600);
         stroke(245);
@@ -35,7 +35,7 @@ function draw(){
     }
   }
   // change the values to obtain other results
-  for (arcSize = 0; arcSize < 1200; arcSize += 30){
+  for (arcSize = 0; arcSize < 1200; arcSize += 30) {
     var color = 235;
     stroke(color);
     noFill();
