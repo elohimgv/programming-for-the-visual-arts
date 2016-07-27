@@ -5,6 +5,9 @@
 * Assignment 5: Synthesis A, Nonlinear Narrative
 *
 * MOOC: Introduction to Programming For The Visual Arts with p5.js
+* 
+* Note: the code dosen´t run on browser like Crhome, Chrome Canary
+* just run on Mozilla Firefox and Microsoft Edge.
 *
 * Platform: https://www.kadenze.com/
 *
