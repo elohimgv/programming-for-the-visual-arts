@@ -40,8 +40,14 @@ function draw() {
 
   // ball moves on sine curve
   var y = offset + (sin(angle) * scalar);
-  // condition to increase the ball
+  // condition to increase the ball if is true
   if (increaseBall == false) {
+    sizeX_ball++;
+    sizeY_ball++;
+    ellipse(mouseX + 20, y, sizeX_ball, sizeY_ball);
+  }
+  // condition to increase the ball if is false
+  if (increaseBall == true) {
     sizeX_ball++;
     sizeY_ball++;
     ellipse(mouseX + 20, y, sizeX_ball, sizeY_ball);
@@ -59,5 +65,4 @@ function mousePressed() {
 
 function mouseReleased() {
   noLoop();
-  //!increaseBall = increaseBall;
 }
