@@ -18,12 +18,16 @@ var offset = 300;
 var scalar = 35;
 // speed of the motion
 var speed = 0.05;
-// var for increment the ball size
-var increaseBall = true;
 // size X baLL
 var sizeX_ball = 10;
 // size Y ball
 var sizeY_ball = 10;
+// var to control if the ball is moving or stopping
+var stopBall = true;
+// var move to right the ball and increase
+var moveToRightIncreaseBall = true;
+// var move to left the ball and decrease
+var moveToLeftDecreaseBall = true;
 
 function setup() {
   createCanvas(1200, 600);
@@ -41,13 +45,13 @@ function draw() {
   // ball moves on sine curve
   var y = offset + (sin(angle) * scalar);
   // condition to increase the ball if is true
-  if (increaseBall == false) {
+  if (moveToRightIncreaseBall == false) {
     sizeX_ball++;
     sizeY_ball++;
     ellipse(mouseX + 20, y, sizeX_ball, sizeY_ball);
   }
   // condition to increase the ball if is false
-  if (increaseBall == true) {
+  if (moveToRightIncreaseBall == true) {
     sizeX_ball++;
     sizeY_ball++;
     ellipse(mouseX + 20, y, sizeX_ball, sizeY_ball);
@@ -60,7 +64,7 @@ function draw() {
 
 function mousePressed() {
   loop();
-  increaseBall = !increaseBall;
+  moveToRightIncreaseBall = !moveToRightIncreaseBall;
 }
 
 function mouseReleased() {
