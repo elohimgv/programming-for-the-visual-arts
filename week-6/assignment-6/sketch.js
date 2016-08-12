@@ -10,6 +10,8 @@
 *
 */
 
+var sound;
+
 var angle = 0;
 // change the position of the wave in "axis y"
 // if increment the offset value, "axis y" increment and vice versa
@@ -26,6 +28,10 @@ var sizeY_ball = 10;
 var state = true;
 // var move to ball x axis
 var moveX;
+
+function preload() {
+  sound = loadSound('song.mp3');
+}
 
 function setup() {
   createCanvas(1200, 600);
