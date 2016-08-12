@@ -40,15 +40,21 @@ function draw() {
     angle += (TWO_PI / 60) / 4;
   }
 
+  // RGB - GREEN color
+  var G = map(mouseX, 0, width, 0, 255);
+  // RGB - BLUE color
+  var B = map(mouseY, 0, height, 0, 255);
   // ball moves on sine curve
   var y = offset + (sin(angle) * scalar);
   // condition to increase the ball if is true
   if (state == false) {
+    fill(234, G, B);
     ellipse(mouseX + 20, y, sizeX_ball, sizeY_ball);
   }
   // condition to increase the ball if is false
   // and avoid to disappear the ball when RIGHT_ARROW key is pressed
   if (state == true) {
+    fill(234, G, B);
     ellipse(mouseX + 20, y, sizeX_ball, sizeY_ball);
   }
 
