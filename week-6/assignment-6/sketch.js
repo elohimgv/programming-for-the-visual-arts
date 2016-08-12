@@ -22,12 +22,10 @@ var speed = 0.05;
 var sizeX_ball = 10;
 // size Y ball
 var sizeY_ball = 10;
-// var to control if the ball is moving or stopping
-var stopBall = true;
-// var move to right the ball and increase
-var moveToRightIncreaseBall = true;
-// var move to left the ball and decrease
-var moveToLeftDecreaseBall = true;
+// boolean var to activate increase and decrease the ball
+var state = true;
+// var move to ball x axis
+var moveX;
 
 function setup() {
   createCanvas(1200, 600);
@@ -45,15 +43,12 @@ function draw() {
   // ball moves on sine curve
   var y = offset + (sin(angle) * scalar);
   // condition to increase the ball if is true
-  if (moveToRightIncreaseBall == false) {
-    sizeX_ball++;
-    sizeY_ball++;
+  if (state == false) {
     ellipse(mouseX + 20, y, sizeX_ball, sizeY_ball);
   }
   // condition to increase the ball if is false
-  if (moveToRightIncreaseBall == true) {
-    sizeX_ball++;
-    sizeY_ball++;
+  // and avoid to disappear the ball when RIGHT_ARROW key is pressed
+  if (state == true) {
     ellipse(mouseX + 20, y, sizeX_ball, sizeY_ball);
   }
 
@@ -62,11 +57,25 @@ function draw() {
   rect(0, 0, width, height);
 }
 
-function mousePressed() {
+function keyPressed() {
   loop();
-  moveToRightIncreaseBall = !moveToRightIncreaseBall;
+  state = !state;
+  // decision to increase the ball
+  if (keyCode == RIGHT_ARROW) {
+    sizeX_ball += 10;
+    sizeY_ball += 10;
+  // decision to decrease the ball
+  } else if (keyCode == LEFT_ARROW) {
+    sizeX_ball -= 10;
+    sizeY_ball -= 10;
+  }
 }
 
-function mouseReleased() {
+function keyReleased() {
   noLoop();
+}
+
+function mouseMoved() {
+  loop();
+  moveX = mouseX;
 }
