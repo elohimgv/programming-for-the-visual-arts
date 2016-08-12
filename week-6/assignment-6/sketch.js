@@ -91,3 +91,12 @@ function mouseMoved() {
   loop();
   moveX = mouseX;
 }
+
+function mousePressed()
+{
+  if (sound.isPlaying()) {
+    sound.stop();
+  } else {
+    sound.play();
+  }
+}
