@@ -29,46 +29,53 @@ function draw() {
   image(kim);
   fill(240, 70, 218, 130);
   rect(0, 0, 300, 400);
-
+  letter_look_1()
+  /**
   // letter "K" shape
   fill(244, 070, 017);
   noStroke();
   beginShape();
-  vertex(107.33, 94.33);
-  vertex(107.33, 274.59);
-  vertex(129.33, 274.59);
-  vertex(129.33, 229);
-  vertex(141, 215.67);
-  vertex(183, 274.59);
-  vertex(210.67, 274.59);
-  vertex(157.33, 202.33);
-  vertex(203.67, 151.5);
-  vertex(176.67, 151.5);
-  vertex(129.67, 208.67);
-  vertex(129.67, 94.33);
-  vertex(107.33, 94.33);
+  vertex(107.33, 94.33); // 1
+  vertex(107.33, 274.59); // 2
+  vertex(129.33, 274.59); // 3
+  vertex(129.33, 229); // 4
+  vertex(141, 215.67); // 5
+  vertex(183, 274.59); // 6
+  vertex(210.67, 274.59); // 7
+  vertex(157.33, 202.33); // 8
+  vertex(203.67, 151.5); // 9
+  vertex(176.67, 151.5); // 10
+  vertex(129.67, 208.67); // 11
+  vertex(129.67, 94.33); // 12
+  vertex(107.33, 94.33); // 13
   endShape();
+  */
 }
 
 function letter_look_1() {
   // letter "K" shape
-  fill(244, 070, 017);
-  noStroke();
-  beginShape();
-  vertex(107.33, 94.33);
-  vertex(107.33, 274.59);
-  vertex(129.33, 274.59);
-  vertex(129.33, 229);
-  vertex(141, 215.67);
-  vertex(183, 274.59);
-  vertex(210.67, 274.59);
-  vertex(157.33, 202.33);
-  vertex(203.67, 151.5);
-  vertex(176.67, 151.5);
-  vertex(129.67, 208.67);
-  vertex(129.67, 94.33);
-  vertex(107.33, 94.33);
-  endShape();
+  var counter = 0;
+  var space = 5;
+  while (counter < 5) {
+    counter++;
+    fill(244 + (counter * space), 070 + (counter * space), 017 + (counter * space));
+    noStroke();
+    beginShape();
+    vertex(107.33 + (counter * space), 94.33 + (counter * space));
+    vertex(107.33 + (counter * space), 274.59 + (counter * space));
+    vertex(129.33 + (counter * space), 274.59 + (counter * space));
+    vertex(129.33 + (counter * space), 229 + (counter * space));
+    vertex(141 + (counter * space), 215.67 + (counter * space));
+    vertex(183 + (counter * space), 274.59 + (counter * space));
+    vertex(210.67 + (counter * space), 274.59 + (counter * space));
+    vertex(157.33 + (counter * space), 202.33 + (counter * space));
+    vertex(203.67 + (counter * space), 151.5 + (counter * space));
+    vertex(176.67 + (counter * space), 151.5 + (counter * space));
+    vertex(129.67 + (counter * space), 208.67 + (counter * space));
+    vertex(129.67 + (counter * space), 94.33 + (counter * space));
+    vertex(107.33 + (counter * space), 94.33 + (counter * space));
+    endShape();
+  }
 }
 
 function letter_look_2() {
