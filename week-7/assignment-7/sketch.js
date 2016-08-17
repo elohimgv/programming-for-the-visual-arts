@@ -29,7 +29,7 @@ function draw() {
   image(kim);
   fill(240, 70, 218, 130);
   rect(0, 0, 300, 400);
-  letter_look_1()
+  letter_look_2()
   /**
   // letter "K" shape
   fill(244, 070, 017);
@@ -53,7 +53,7 @@ function draw() {
 }
 
 function letter_look_1() {
-  // letter "K" shape
+  // letter "K" shape 1
   var counter = 0;
   var space = 5;
   while (counter < 5) {
@@ -79,24 +79,52 @@ function letter_look_1() {
 }
 
 function letter_look_2() {
-  // letter "K" shape
-  fill(244, 070, 017);
-  noStroke();
-  beginShape();
-  vertex(107.33, 94.33);
-  vertex(107.33, 274.59);
-  vertex(129.33, 274.59);
-  vertex(129.33, 229);
-  vertex(141, 215.67);
-  vertex(183, 274.59);
-  vertex(210.67, 274.59);
-  vertex(157.33, 202.33);
-  vertex(203.67, 151.5);
-  vertex(176.67, 151.5);
-  vertex(129.67, 208.67);
-  vertex(129.67, 94.33);
-  vertex(107.33, 94.33);
-  endShape();
+  // letter "K" shape 2
+  // if sizeLadder is "X" value will be the half of rows (e.g. sizeLadder = 10 - will be 5 rows)
+  var repet = 10;
+  var n = 2;
+  var plus = 10;
+  for (var i = 0; i < repet; i++) {
+    // leftK
+    for (var downK  = repet - 1; downK > 0; downK--) {
+      fill(230 + downK * 6);
+      noStroke();
+      beginShape();
+      vertex((107.33 / n) + (downK + plus), (94.33 / n) + (downK + plus));
+      vertex((107.33 / n) + downK, (274.59 / n) + downK);
+      vertex((129.33 / n) + (downK + plus), (274.59 / n) + (downK + plus));
+      vertex((129.33 / n) + downK, (229 / n) + downK);
+      vertex((141 / n) + (downK + plus), (215.67 / n) + (downK + plus));
+      vertex((183 / n) + downK, (274.59 / n) + downK);
+      vertex((210.67 / n) + (downK + plus), (274.59 / n) + (downK + plus));
+      vertex((157.33 / n) + downK, (202.33 / n) + downK);
+      vertex((203.67 / n) + (downK + plus), (151.5 / n) + (downK + plus));
+      vertex((176.67 / n) + downK, (151.5 / n) + downK);
+      vertex((129.67 / n) + (downK + plus), (208.67 / n) + (downK + plus));
+      vertex((129.67 / n) + downK, (94.33 / n) + downK);
+      vertex((107.33 / n) + (downK + plus), (94.33 / n) + (downK + plus));
+      endShape();
+    }
+    for (var aboveK = 0; aboveK <= i + 1; aboveK++) {
+      fill(244, 070, 017);
+      noStroke();
+      beginShape();
+      vertex((107.33 / n) - (aboveK + plus), (94.33 / n) - (aboveK + plus));
+      vertex((107.33 / n) - aboveK, (274.59 / n) - aboveK);
+      vertex((129.33 / n) - (aboveK + plus), (274.59 / n) - (aboveK + plus));
+      vertex((129.33 / n) - aboveK, (229 / n) - aboveK);
+      vertex((141 / n) - (aboveK + plus), (215.67 / n) - (aboveK + plus));
+      vertex((183 / n) - aboveK, (274.59 / n) - aboveK);
+      vertex((210.67 / n) - (aboveK + plus), (274.59 / n) - (aboveK + plus));
+      vertex((157.33 / n) - aboveK, (202.33 / n)- aboveK);
+      vertex((203.67 / n) - (aboveK + plus), (151.5 / n) - (aboveK + plus));
+      vertex((176.67 / n) - aboveK, (151.5 / n) - aboveK);
+      vertex((129.67 / n) - (aboveK + plus), (208.67 / n) - (aboveK + plus));
+      vertex((129.67 / n) - aboveK, (94.33 / n) - aboveK);
+      vertex((107.33 / n) - (aboveK + plus), (94.33 / n) - (aboveK + plus));
+      endShape();
+    }
+  }
 }
 
 function letter_look_3() {
