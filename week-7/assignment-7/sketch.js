@@ -80,15 +80,14 @@ function letter_look_1() {
 
 function letter_look_2() {
   // letter "K" shape 2
-  // if sizeLadder is "X" value will be the half of rows (e.g. sizeLadder = 10 - will be 5 rows)
+  // if repet is "X" value will be the half of K (e.g. repet = 10 - will be 5 K)
   var repet = 10;
   var n = 2;
   var plus = 10;
   for (var i = 0; i < repet; i++) {
-    // leftK
+    // down K
     for (var downK  = repet - 1; downK > 0; downK--) {
       fill(230 + downK * 6);
-      noStroke();
       beginShape();
       vertex((107.33 / n) + (downK + plus), (94.33 / n) + (downK + plus));
       vertex((107.33 / n) + downK, (274.59 / n) + downK);
@@ -105,9 +104,9 @@ function letter_look_2() {
       vertex((107.33 / n) + (downK + plus), (94.33 / n) + (downK + plus));
       endShape();
     }
+    // above K
     for (var aboveK = 0; aboveK <= i + 1; aboveK++) {
       fill(244, 070, 017);
-      noStroke();
       beginShape();
       vertex((107.33 / n) - (aboveK + plus), (94.33 / n) - (aboveK + plus));
       vertex((107.33 / n) - aboveK, (274.59 / n) - aboveK);
