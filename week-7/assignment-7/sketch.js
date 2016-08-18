@@ -29,7 +29,7 @@ function draw() {
   image(kim);
   fill(240, 70, 218, 130);
   rect(0, 0, 300, 400);
-  letter_look_2()
+  letter_look_3()
   /**
   // letter "K" shape
   fill(244, 070, 017);
@@ -128,8 +128,7 @@ function letter_look_2() {
 
 function letter_look_3() {
   // letter "K" shape
-  fill(244, 070, 017);
-  noStroke();
+  strokeWeight(5);
   beginShape();
   vertex(107.33, 94.33);
   vertex(107.33, 274.59);
@@ -145,6 +144,21 @@ function letter_look_3() {
   vertex(129.67, 94.33);
   vertex(107.33, 94.33);
   endShape();
+
+  // ellipses
+  fill(255);
+  ellipse(107.33, 94.33, 15, 15);
+  ellipse(107.33, 274.59, 15, 15);
+  ellipse(129.33, 274.59, 15, 15);
+  ellipse(129.33, 229, 15, 15);
+  ellipse(141, 215.67, 15, 15);
+  ellipse(183, 274.59, 15, 15);
+  ellipse(210.67, 274.59, 15, 15);
+  ellipse(157.33, 202.33, 15, 15);
+  ellipse(203.67, 151.5, 15, 15);
+  ellipse(176.67, 151.5, 15, 15);
+  ellipse(129.67, 208.67, 15, 15);
+  ellipse(129.67, 94.33, 15, 15);
 }
 
 function letter_look_4() {
