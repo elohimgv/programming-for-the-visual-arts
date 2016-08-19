@@ -13,11 +13,12 @@
 *
 */
 
-var kim;
+var kim, k;
 
 function preload() {
   // load an image
   kim = loadImage("kim.jpg");
+  k = loadImage("k.png");
 }
 
 function setup() {
@@ -29,7 +30,7 @@ function draw() {
   image(kim);
   fill(240, 70, 218, 130);
   rect(0, 0, 300, 400);
-  letter_look_3()
+  letter_look_4()
   /**
   // letter "K" shape
   fill(244, 070, 017);
@@ -163,23 +164,9 @@ function letter_look_3() {
 
 function letter_look_4() {
   // letter "K" shape
-  fill(244, 070, 017);
-  noStroke();
-  beginShape();
-  vertex(107.33, 94.33);
-  vertex(107.33, 274.59);
-  vertex(129.33, 274.59);
-  vertex(129.33, 229);
-  vertex(141, 215.67);
-  vertex(183, 274.59);
-  vertex(210.67, 274.59);
-  vertex(157.33, 202.33);
-  vertex(203.67, 151.5);
-  vertex(176.67, 151.5);
-  vertex(129.67, 208.67);
-  vertex(129.67, 94.33);
-  vertex(107.33, 94.33);
-  endShape();
+  var x = random(-5, 5);
+  var y = random(-5, 5)
+  return (image(k, x, y));
 }
 
 function letter_look_5() {
