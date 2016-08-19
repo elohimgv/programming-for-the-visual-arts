@@ -13,13 +13,14 @@
 *
 */
 
-var kim, k;
+var kim, k, k_1;
 var x = 5;
 
 function preload() {
-  // load an image
+  // load an images
   kim = loadImage("kim.jpg");
   k = loadImage("k.png");
+  k_1 = loadImage("k_1.png");
 }
 
 function setup() {
@@ -31,7 +32,7 @@ function draw() {
   image(kim);
   fill(240, 70, 218, 130);
   rect(0, 0, 300, 400);
-  letter_look_5(2);
+  letter_look_6();
   /**
   // letter "K" shape
   fill(244, 070, 017);
@@ -174,23 +175,32 @@ function letter_look_5(x) {
   // letter "K" shape
   if (x > 1) {
     // create a random numbers between 0 and 1
-    var r = random(0, 1);
+    var r = random(0, 1.0);
     strokeWeight(5);
-    // 30% chance this will happen
-    if (r > 0.30) {
+    // 95% chance this will happen
+    if (r > 0.05) {
       line(107, 94, 107, 274);
       line(107, 180, 160, 115);
       line(107, 180, 165, 274);
     }
-    // 70% chance this will happen
+    // 5% chance this will happen
   } else {
-    line(80, 94, 107, 274);
-    line(80, 180, 130, 115);
-    line(80, 180, 135, 274);
+      line(80, 94, 107, 274);
+      line(80, 180, 130, 115);
+      line(80, 180, 135, 274);
   }
 }
 
 function letter_look_6() {
+  var offset = 0;
+  var easing = 0.05;
+  // Display at full opacity
+  image(k_1, 0, 0);
+  var dx = (mouseX-k_1.width/2) - offset;
+  offset += dx * easing;
+  // Display at half opacity
+  tint(255, 127);
+  image(k_1, offset, 0);
 
 }
 
@@ -215,5 +225,5 @@ function letter_look_11() {
 }
 
 function letter_look_12() {
-  
+
 }
