@@ -13,8 +13,27 @@
 *
 */
 
-var kim, k, k_1;
+// variable for background image
+var kim;
+// variable for function letter_look_4()
+var k;
+// variable for function letter_look_5()
 var x = 5;
+// variable for function letter_look_6()
+var  k_1;
+// variables for function letter_look_7()
+x_1 = 80;
+y_1 = 94;
+x_2 = 107;
+y_2 = 274;
+x_3 = 80;
+y_3 = 180;
+x_4 = 130;
+y_4 = 115;
+x_5 = 80;
+y_5 = 180;
+x_6 = 135;
+y_6 = 274;
 
 function preload() {
   // load an images
@@ -29,30 +48,12 @@ function setup() {
 }
 
 function draw() {
+  // image background
   image(kim);
+  // color to image background with alpha value (transparency)
   fill(240, 70, 218, 130);
   rect(0, 0, 300, 400);
-  letter_look_6();
-  /**
-  // letter "K" shape
-  fill(244, 070, 017);
-  noStroke();
-  beginShape();
-  vertex(107.33, 94.33); // 1
-  vertex(107.33, 274.59); // 2
-  vertex(129.33, 274.59); // 3
-  vertex(129.33, 229); // 4
-  vertex(141, 215.67); // 5
-  vertex(183, 274.59); // 6
-  vertex(210.67, 274.59); // 7
-  vertex(157.33, 202.33); // 8
-  vertex(203.67, 151.5); // 9
-  vertex(176.67, 151.5); // 10
-  vertex(129.67, 208.67); // 11
-  vertex(129.67, 94.33); // 12
-  vertex(107.33, 94.33); // 13
-  endShape();
-  */
+  letter_look_7();
 }
 
 function letter_look_1() {
@@ -83,7 +84,7 @@ function letter_look_1() {
 
 function letter_look_2() {
   // letter "K" shape 2
-  // if repet is "X" value will be the half of K (e.g. repet = 10 - will be 5 K)
+  // if repet is "something value" will be the half of "K shapes" (e.g. repet = 10 - will be 5 K)
   var repet = 10;
   var n = 2;
   var plus = 10;
@@ -130,7 +131,7 @@ function letter_look_2() {
 }
 
 function letter_look_3() {
-  // letter "K" shape
+  // letter "K" shape 3
   strokeWeight(5);
   beginShape();
   vertex(107.33, 94.33);
@@ -165,14 +166,14 @@ function letter_look_3() {
 }
 
 function letter_look_4() {
-  // letter "K" shape
+  // letter "K" shape 4
   var x = random(-5, 5);
   var y = random(-5, 5)
   return (image(k, x, y));
 }
 
 function letter_look_5(x) {
-  // letter "K" shape
+  // letter "K" shape 5
   if (x > 1) {
     // create a random numbers between 0 and 1
     var r = random(0, 1.0);
@@ -192,10 +193,11 @@ function letter_look_5(x) {
 }
 
 function letter_look_6() {
+  // letter "K" shape 6
   var offset = 0;
   var easing = 0.05;
   // Display at full opacity
-  image(k_1, 0, 0);
+  image(k_1, width / 2, height / 2);
   var dx = (mouseX-k_1.width/2) - offset;
   offset += dx * easing;
   // Display at half opacity
@@ -205,7 +207,39 @@ function letter_look_6() {
 }
 
 function letter_look_7() {
-
+  // letter "K" shape 6
+  // var to set back
+  var back = 100;
+  line(x_1, y_1, x_2, y_2);
+  line(x_3, y_3, x_4, y_4);
+  line(x_5, y_5, x_6, y_6);
+    x_1++; // begin in 80px
+    y_1++; // begin in 94px
+    x_2++; // begin in 107px
+    y_2++; // begin in 274px
+    x_3++; // begin in 80px
+    y_3++; // begin in 180px
+    x_4++; // begin in 130px
+    y_4++; // begin in 115px
+    x_5++; // begin in 80px
+    y_5++; // begin in 180px
+    x_6++; // begin in 135px
+    y_6++; // begin in 274px
+    // condition to set back letter k shape
+  if (y_2 == 400 && y_6 == 400) {
+    x_1 -= back;
+    y_1 -= back;
+    x_2 -= back;
+    y_2 -= back;
+    x_3 -= back;
+    y_3 -= back;
+    x_4 -= back;
+    y_4 -= back;
+    x_5 -= back;
+    y_5 -= back;
+    x_6 -= back;
+    y_6 -= back;
+  }
 }
 
 function letter_look_8() {
