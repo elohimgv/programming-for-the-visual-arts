@@ -53,7 +53,7 @@ function draw() {
   // color to image background with alpha value (transparency)
   fill(240, 70, 218, 130);
   rect(0, 0, 300, 400);
-  letter_look_7();
+  letter_look_8();
 }
 
 function letter_look_1() {
@@ -207,7 +207,7 @@ function letter_look_6() {
 }
 
 function letter_look_7() {
-  // letter "K" shape 6
+  // letter "K" shape 7
   // var to set back
   var back = 100;
   line(x_1, y_1, x_2, y_2);
@@ -243,7 +243,24 @@ function letter_look_7() {
 }
 
 function letter_look_8() {
-
+  // letter "K" shape 8
+  var counter1;
+  var counter2;
+  var counter3;
+  fill(255);
+  noStroke();
+  // vertical triangles
+  for (counter1 = 0; counter1 < 170; counter1 += 3) {
+    triangle(89, 125 + counter1, 107, 144 + counter1, 126, 125 + counter1);
+    // right top triangles
+    for (counter2 = 62; counter2 > 0; counter2 -= 3) {
+      triangle(169 - counter2, 122 + counter2, 166 - counter2, 148 + counter2, 192 - counter2, 150 + counter2);
+      // right bottom triangles
+      for (counter3 = 62; counter3 > 0; counter3 -= 3) {
+        triangle(109 + counter3, 234 + counter3, 108 + counter3, 208 + counter3, 134 + counter3, 207 + counter3);
+      }
+    }
+  }
 }
 
 function letter_look_9() {
