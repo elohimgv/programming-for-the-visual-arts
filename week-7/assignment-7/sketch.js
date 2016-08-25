@@ -34,12 +34,15 @@ x_5 = 80;
 y_5 = 180;
 x_6 = 135;
 y_6 = 274;
+// variables for function letter_look_10()
+var k_2;
 
 function preload() {
   // load an images
   kim = loadImage("kim.jpg");
   k = loadImage("k.png");
   k_1 = loadImage("k_1.png");
+  k_2 = loadImage("k_2.png");
 }
 
 function setup() {
@@ -53,7 +56,7 @@ function draw() {
   // color to image background with alpha value (transparency)
   fill(240, 70, 218, 130);
   rect(0, 0, 300, 400);
-  letter_look_9();
+  letter_look_10(100, 20, 60, 82, 10);
 }
 
 function letter_look_1() {
@@ -313,9 +316,25 @@ function letter_look_9() {
   line(129.67, 208.67, 109.67, 188.67);
   line(129.67, 94.33, 109.67, 74.33);
 }
-
-function letter_look_10() {
-
+  // letter_look_10(100, 20, 60, 82, 10);
+function letter_look_10(position_x, position_y, size_x, size_y, repet) {
+  for (var i = 0; i < repet; i++) {
+    if (i % repet == 1) {
+      image(k_2, position_x + i , position_y, size_x, size_y);
+    }
+    else if (i % repet == 3) {
+      image(k_2, position_x - i - 70, position_y + i + 50, size_x, size_y);
+    }
+    else if (i % repet == 5) {
+      image(k_2, position_x + i + 70, position_y + i + 50, size_x, size_y);
+    }
+    else if (i % repet == 7) {
+      image(k_2, position_x, position_y + i + 100, size_x, size_y);
+    }
+    else if (i % repet == 9) {
+      image(k_2, position_x, position_y + i + 200, size_x, size_y);
+    }
+  }
 }
 
 function letter_look_11() {
