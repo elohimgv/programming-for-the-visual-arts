@@ -53,7 +53,7 @@ function draw() {
   // color to image background with alpha value (transparency)
   fill(240, 70, 218, 130);
   rect(0, 0, 300, 400);
-  letter_look_8();
+  letter_look_9();
 }
 
 function letter_look_1() {
@@ -264,7 +264,54 @@ function letter_look_8() {
 }
 
 function letter_look_9() {
+  fill(255, 150);
+  beginShape();
+  vertex(107.33, 94.33);
+  vertex(107.33, 274.59);
+  vertex(129.33, 274.59);
+  vertex(129.33, 229);
+  vertex(141, 215.67);
+  vertex(183, 274.59);
+  vertex(210.67, 274.59);
+  vertex(157.33, 202.33);
+  vertex(203.67, 151.5);
+  vertex(176.67, 151.5);
+  vertex(129.67, 208.67);
+  vertex(129.67, 94.33);
+  vertex(107.33, 94.33);
+  translate(-20, -20);
+  endShape();
 
+  beginShape();
+  vertex(107.33, 94.33);
+  vertex(107.33, 274.59);
+  vertex(129.33, 274.59);
+  vertex(129.33, 229);
+  vertex(141, 215.67);
+  vertex(183, 274.59);
+  vertex(210.67, 274.59);
+  vertex(157.33, 202.33);
+  vertex(203.67, 151.5);
+  vertex(176.67, 151.5);
+  vertex(129.67, 208.67);
+  vertex(129.67, 94.33);
+  vertex(107.33, 94.33);
+  translate(20, 20);
+  endShape();
+
+  // lines
+  line(107.33, 94.33, 87.33, 74.33);
+  line(107.33, 274.59, 87.33, 254.59);
+  line(129.33, 274.59, 109.33, 254.59);
+  line(129.33, 229, 109.33, 209);
+  line(141, 215.67, 121, 195.67);
+  line(183, 274.59, 163, 254.59);
+  line(210.67, 274.59, 190.67, 254.59);
+  line(157.33, 202.33, 137.33, 182.33);
+  line(203.67, 151.5, 183.67, 131.5);
+  line(176.67, 151.5, 156.67, 131.5);
+  line(129.67, 208.67, 109.67, 188.67);
+  line(129.67, 94.33, 109.67, 74.33);
 }
 
 function letter_look_10() {
