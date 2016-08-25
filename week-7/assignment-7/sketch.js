@@ -267,6 +267,8 @@ function letter_look_8() {
 }
 
 function letter_look_9() {
+  // letter "K" shape 8
+  // I used translate() function instead of reset all coordinates
   fill(255, 150);
   beginShape();
   vertex(107.33, 94.33);
@@ -282,6 +284,7 @@ function letter_look_9() {
   vertex(129.67, 208.67);
   vertex(129.67, 94.33);
   vertex(107.33, 94.33);
+  // translate() function
   translate(-20, -20);
   endShape();
 
@@ -299,6 +302,7 @@ function letter_look_9() {
   vertex(129.67, 208.67);
   vertex(129.67, 94.33);
   vertex(107.33, 94.33);
+  // translate() function
   translate(20, 20);
   endShape();
 
@@ -316,21 +320,28 @@ function letter_look_9() {
   line(129.67, 208.67, 109.67, 188.67);
   line(129.67, 94.33, 109.67, 74.33);
 }
-  // letter_look_10(100, 20, 60, 82, 10);
+  
 function letter_look_10(position_x, position_y, size_x, size_y, repet) {
+  // loop, var repet count how many times run the loop
   for (var i = 0; i < repet; i++) {
+    // it works with module operator
+    // image on the top-center position 
     if (i % repet == 1) {
       image(k_2, position_x + i , position_y, size_x, size_y);
     }
+    // image on the left
     else if (i % repet == 3) {
       image(k_2, position_x - i - 70, position_y + i + 50, size_x, size_y);
     }
+    // image on the right
     else if (i % repet == 5) {
       image(k_2, position_x + i + 70, position_y + i + 50, size_x, size_y);
     }
+    // penultimate image
     else if (i % repet == 7) {
       image(k_2, position_x, position_y + i + 100, size_x, size_y);
     }
+    // image on the bottom position
     else if (i % repet == 9) {
       image(k_2, position_x, position_y + i + 200, size_x, size_y);
     }
