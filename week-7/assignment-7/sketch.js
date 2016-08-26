@@ -34,8 +34,10 @@ x_5 = 80;
 y_5 = 180;
 x_6 = 135;
 y_6 = 274;
-// variables for function letter_look_10()
+// variable for function letter_look_10()
 var k_2;
+// variable for function letter_look_11()
+var letterK;
 
 function preload() {
   // load an images
@@ -47,7 +49,12 @@ function preload() {
 
 function setup() {
   // size of the canvas
-  createCanvas(300, 400);
+  createCanvas(300, 400)
+  // features for font
+  textFont("Baloo Paaji");
+  textAlign(CENTER);
+  // variable for text() function
+  letterK = "k";
 }
 
 function draw() {
@@ -56,7 +63,7 @@ function draw() {
   // color to image background with alpha value (transparency)
   fill(240, 70, 218, 130);
   rect(0, 0, 300, 400);
-  letter_look_10(100, 20, 60, 82, 10);
+  letter_look_11();
 }
 
 function letter_look_1() {
@@ -320,12 +327,12 @@ function letter_look_9() {
   line(129.67, 208.67, 109.67, 188.67);
   line(129.67, 94.33, 109.67, 74.33);
 }
-  
+
 function letter_look_10(position_x, position_y, size_x, size_y, repet) {
   // loop, var repet count how many times run the loop
   for (var i = 0; i < repet; i++) {
     // it works with module operator
-    // image on the top-center position 
+    // image on the top-center position
     if (i % repet == 1) {
       image(k_2, position_x + i , position_y, size_x, size_y);
     }
@@ -349,7 +356,9 @@ function letter_look_10(position_x, position_y, size_x, size_y, repet) {
 }
 
 function letter_look_11() {
-
+  fill("#E23D23");
+  textSize(300);
+  text(letterK, width / 2, 300);
 }
 
 function letter_look_12() {
