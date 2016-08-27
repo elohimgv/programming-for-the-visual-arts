@@ -37,24 +37,28 @@ y_6 = 274;
 // variable for function letter_look_10()
 var k_2;
 // variable for function letter_look_11()
-var letterK;
+var letterK_1;
+// variable for function letter_look_12()
+var letterK_2;
 
 function preload() {
   // load an images
-  kim = loadImage("kim.jpg");
-  k = loadImage("k.png");
-  k_1 = loadImage("k_1.png");
-  k_2 = loadImage("k_2.png");
+  kim = loadImage("images/kim.jpg");
+  k = loadImage("images/k.png");
+  k_1 = loadImage("images/k_1.png");
+  k_2 = loadImage("images/k_2.png");
 }
 
 function setup() {
   // size of the canvas
-  createCanvas(300, 400)
-  // features for font
+  createCanvas(300, 400);
+  // features for font function letter_look_11()
   textFont("Baloo Paaji");
   textAlign(CENTER);
-  // variable for text() function
-  letterK = "k";
+  letterK_1 = "k";
+  // features for font function letter_look_12()
+  textFont("Pacifico");
+  letterK_2 = "k!";
 }
 
 function draw() {
@@ -63,7 +67,7 @@ function draw() {
   // color to image background with alpha value (transparency)
   fill(240, 70, 218, 130);
   rect(0, 0, 300, 400);
-  letter_look_11();
+  letter_look_12();
 }
 
 function letter_look_1() {
@@ -213,7 +217,6 @@ function letter_look_6() {
   // Display at half opacity
   tint(255, 127);
   image(k_1, offset, 0);
-
 }
 
 function letter_look_7() {
@@ -358,9 +361,11 @@ function letter_look_10(position_x, position_y, size_x, size_y, repet) {
 function letter_look_11() {
   fill("#E23D23");
   textSize(300);
-  text(letterK, width / 2, 300);
+  text(letterK_1, width / 2, 300);
 }
 
 function letter_look_12() {
-
+  fill("#ED225D");
+  textSize(200);
+  text(letterK_2, width / 2, 300);
 }
