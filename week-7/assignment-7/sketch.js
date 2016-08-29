@@ -13,12 +13,14 @@
 *
 */
 
+// variable for change to state to state
+var state = 1;
 // variable for background image
 var kim;
 // variable for function letter_look_4()
 var k;
 // variable for function letter_look_5()
-var x = 5;
+var m = 5;
 // variable for function letter_look_6()
 var  k_1;
 // variables for function letter_look_7()
@@ -67,7 +69,32 @@ function draw() {
   // color to image background with alpha value (transparency)
   fill(240, 70, 218, 130);
   rect(0, 0, 300, 400);
-  letter_look_12();
+  // conditions for chage to state to state
+  if (state == 1) {
+    letter_look_1();
+  } else if (state == 2) {
+    letter_look_2();
+  } else if (state == 3) {
+    letter_look_3();
+  } else if (state == 4) {
+    letter_look_4();
+  } else if (state == 5) {
+    letter_look_5(m);
+  } else if (state == 6) {
+    letter_look_6();
+  } else if (state == 7) {
+    letter_look_7();
+  } else if (state == 8) {
+    letter_look_8();
+  } else if (state == 9) {
+    letter_look_9();
+  } else if (state == 10) {
+    letter_look_10(100, 20, 60, 82, 10);
+  } else if (state == 11) {
+    letter_look_11();
+  } else if (state == 12) {
+    letter_look_12();
+  }
 }
 
 function letter_look_1() {
@@ -368,4 +395,33 @@ function letter_look_12() {
   fill("#ED225D");
   textSize(200);
   text(letterK_2, width / 2, 300);
+}
+
+function keyTyped() {
+    // conditions... if letter q - s is pressed, active the corresponding nextState
+  if (key == 'q' || key == 'Q') {
+    state = 1;
+  } else if (key == 'w' || key == 'W') {
+    state = 2;
+  } else if (key == 'e' || key == 'E') {
+    state = 3;
+  } else if (key == 'r' || key == 'R') {
+    state = 4;
+  } else if (key == 't' || key == 'T') {
+    state = 5;
+  } else if (key == 'y' || key == 'Y') {
+    state = 6;
+  } else if (key == 'u' || key == 'U') {
+    state = 7;
+  } else if (key == 'i' || key == 'I') {
+    state = 8;
+  } else if (key == 'o' || key == 'O') {
+    state = 9;
+  } else if (key == 'p' || key == 'P') {
+    state = 10;
+  } else if (key == 'a' || key == 'A') {
+    state = 11;
+  } else if (key == 's' || key  == 'S') {
+    state = 12;
+  }
 }
