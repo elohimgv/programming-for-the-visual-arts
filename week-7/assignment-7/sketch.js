@@ -71,33 +71,33 @@ function draw() {
   rect(0, 0, 300, 400);
   // conditions for chage to state to state
   if (state == 1) {
-    letter_look_1();
+    drawLetter_1();
   } else if (state == 2) {
-    letter_look_2();
+    drawLetter_2();
   } else if (state == 3) {
-    letter_look_3();
+    drawLetter_3();
   } else if (state == 4) {
-    letter_look_4();
+    drawLetter_4();
   } else if (state == 5) {
-    letter_look_5(m);
+    drawLetter_5(m);
   } else if (state == 6) {
-    letter_look_6();
+    drawLetter_6();
   } else if (state == 7) {
-    letter_look_7();
+    drawLetter_7();
   } else if (state == 8) {
-    letter_look_8();
+    drawLetter_8();
   } else if (state == 9) {
-    letter_look_9();
+    drawLetter_9();
   } else if (state == 10) {
-    letter_look_10(100, 20, 60, 82, 10);
+    drawLetter_10(100, 20, 60, 82, 10);
   } else if (state == 11) {
-    letter_look_11();
+    drawLetter_11();
   } else if (state == 12) {
-    letter_look_12();
+    drawLetter_12();
   }
 }
 
-function letter_look_1() {
+function drawLetter_1() {
   // letter "K" shape 1
   var counter = 0;
   var space = 5;
@@ -123,7 +123,7 @@ function letter_look_1() {
   }
 }
 
-function letter_look_2() {
+function drawLetter_2() {
   // letter "K" shape 2
   // if repet is "something value" will be the half of "K shapes" (e.g. repet = 10 - will be 5 K)
   var repet = 10;
@@ -171,7 +171,7 @@ function letter_look_2() {
   }
 }
 
-function letter_look_3() {
+function drawLetter_3() {
   // letter "K" shape 3
   strokeWeight(5);
   beginShape();
@@ -206,14 +206,14 @@ function letter_look_3() {
   ellipse(129.67, 94.33, 15, 15);
 }
 
-function letter_look_4() {
+function drawLetter_4() {
   // letter "K" shape 4
   var x = random(-5, 5);
   var y = random(-5, 5)
   return (image(k, x, y));
 }
 
-function letter_look_5(x) {
+function drawLetter_5(x) {
   // letter "K" shape 5
   if (x > 1) {
     // create a random numbers between 0 and 1
@@ -233,7 +233,7 @@ function letter_look_5(x) {
   }
 }
 
-function letter_look_6() {
+function drawLetter_6() {
   // letter "K" shape 6
   var offset = 0;
   var easing = 0.05;
@@ -246,7 +246,7 @@ function letter_look_6() {
   image(k_1, offset, 0);
 }
 
-function letter_look_7() {
+function drawLetter_7() {
   // letter "K" shape 7
   // var to set back
   var back = 100;
@@ -282,7 +282,7 @@ function letter_look_7() {
   }
 }
 
-function letter_look_8() {
+function drawLetter_8() {
   // letter "K" shape 8
   var counter1;
   var counter2;
@@ -303,7 +303,7 @@ function letter_look_8() {
   }
 }
 
-function letter_look_9() {
+function drawLetter_9() {
   // letter "K" shape 8
   // I used translate() function instead of reset all coordinates
   fill(255, 150);
@@ -358,7 +358,7 @@ function letter_look_9() {
   line(129.67, 94.33, 109.67, 74.33);
 }
 
-function letter_look_10(position_x, position_y, size_x, size_y, repet) {
+function drawLetter_10(position_x, position_y, size_x, size_y, repet) {
   // loop, var repet count how many times run the loop
   for (var i = 0; i < repet; i++) {
     // it works with module operator
@@ -385,20 +385,20 @@ function letter_look_10(position_x, position_y, size_x, size_y, repet) {
   }
 }
 
-function letter_look_11() {
+function drawLetter_11() {
   fill("#E23D23");
   textSize(300);
   text(letterK_1, width / 2, 300);
 }
 
-function letter_look_12() {
+function drawLetter_12() {
   fill("#ED225D");
   textSize(200);
   text(letterK_2, width / 2, 300);
 }
 
 function keyTyped() {
-    // conditions... if letter q - s is pressed, active the corresponding nextState
+    // conditions... if letter q - s is pressed, active the corresponding state
   if (key == 'q' || key == 'Q') {
     state = 1;
   } else if (key == 'w' || key == 'W') {
