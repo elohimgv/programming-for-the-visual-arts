@@ -26,7 +26,7 @@ function draw() {
 
 // Creature class
 function Creature() {
-  /** fields */
+  /** fields render method */
   // field loop
   this.counter = 12;
   // fields for big circle
@@ -34,20 +34,20 @@ function Creature() {
   this.y_1 = height / 2; //height / 2
   this.diameterBig = 200;
   // fields for left leg
-  this.x_2 = 353;
+  this.x_2;
   this.y_2 = 347;
   this.diameterLeftLeg = 63;
   // fields for right leg
-  this.x_3 = 446;
+  this.x_3;
   this.y_3 = 347;
   this.diameterRightLeg = 63;
   // fields for left arm
   this.x_4 = 305;
-  this.y_4 = 216;
+  this.y_4;
   this.diameterLeftArm = 45;
   // fields for right arm
   this.x_5 = 494;
-  this.y_5 = 216;
+  this.y_5;
   this.diameterRightArm = 45;
   // fields for head
   this.x_6 = 400;
@@ -78,29 +78,49 @@ function Creature() {
   this.pointY_10 = 163;
   this.pointX_11 = 415;
   this.pointY_11 = 156;
+  /** fields to control (sine wave) move of legs and arms */
+  this.angle = 0;
+  // x move of the ellipses
+  this.offset2 = 353;
+  this.offset3 = 446;
+  this.offset4 = 216;
+  this.offset5 = 216;
+  // amplitud of the wave
+  this.scalar = 35;
+  // speed of move
+  this.speed = 0.1;
 
-  // method
+  // method render
   this.render = function() {
     // big circle
     ellipse(this.x_1, this.y_1, this.diameterBig, this.diameterBig);
+    /** legs */
+    // left leg
     for (var i = 0; i < this.counter; i++) {
-      /** legs */
-      // left leg
+      this.x_2 = this.offset2 + (sin(this.angle + i) * this.scalar);
+      // draw ellipses
       ellipse(this.x_2 - i + 2, this.y_2 + i * 11, this.diameterLeftLeg - i * 2, this.diameterLeftLeg - i * 2);
       // right leg
       for (var j = 0; j < this.counter; j++) {
+        this.x_3 = this.offset3 + (sin(this.angle + j) * this.scalar);
+        // draw ellipses
         ellipse(this.x_3 + j + 2, this.y_3 + j * 11, this.diameterRightLeg - j * 2, this.diameterRightLeg - j * 2);
         /** arms */
         // left arm
         for (var k = 0; k < this.counter; k++) {
+          this.y_4 = this.offset4 + (sin(this.angle + k) * this.scalar);
+          // draw ellipses
           ellipse(this.x_4 - k * 9, this.y_4, this.diameterLeftArm - k, this.diameterLeftArm - k);
           // right arm
           for (var l = 0; l < this.counter; l++) {
+            this.y_5 = this.offset5 + (sin(this.angle + l) * this.scalar);
+            // draw ellipses
             ellipse(this.x_5 + l * 9, this.y_5, this.diameterRightArm - l, this.diameterRightArm - l);
           }
         }
       }
     }
+    this.angle += this.speed;
     /** head */
     ellipse(this.x_6, this.y_6, this.diameterHead, this.diameterHead);
     /** eyes */
