@@ -12,8 +12,31 @@
 
 // declare object
 var monster;
+/** objects in javascript sintaxis */
+// object to create a motion line with a size of width
+var linear = {
+  "x1": "0",
+  "y1": "0",
+  "x2": "800",
+  "y2": "0"
+}
+// object to create a motion diagonal ine
+var diagonal = {
+  "x1": "700",
+  "y1": "400",
+  "x2": "700",
+  "y2": "400",
+  popUp: function() {
+    var track = 0;
+    while (track < 50) {
+      line(random(this.x1), random(this.y1), random(this.x2), random(this.y2));
+      track++;
+    }
+  }
+}
 
 function setup() {
+  // size of canvas in browser
   createCanvas(800, 500);
   // create object
   monster = new Creature();
@@ -21,6 +44,16 @@ function setup() {
 
 function draw() {
   background(239, 116, 48);
+  // create animation
+  linear.y1++;
+  linear.y2++;
+  line(linear.x1, linear.y1, linear.x2, linear.y2);
+  if (linear.y1 > 500 && linear.y2 > 500) {
+    // update
+    linear.y1 = 0;
+    linear.y2 = 0;
+  }
+  diagonal.popUp();
   monster.render();
 }
 
