@@ -44,6 +44,8 @@ function setup() {
 
 function draw() {
   background(239, 116, 48);
+  diagonal.popUp();
+  monster.render();
   // create animation
   linear.y1++;
   linear.y2++;
@@ -53,8 +55,6 @@ function draw() {
     linear.y1 = 0;
     linear.y2 = 0;
   }
-  diagonal.popUp();
-  monster.render();
 }
 
 // Creature class
