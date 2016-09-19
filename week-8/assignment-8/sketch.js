@@ -36,7 +36,7 @@ var diagonal = {
 }
 
 function setup() {
-  // size of canvas in browser
+  // size of canvas 
   createCanvas(800, 500);
   // create object
   monster = new Creature();
@@ -191,12 +191,10 @@ function Creature() {
         /** arms */
         // left arm
         for (var k = 0; k < this.counter; k++) {
-          // to a constant to return the same pseudo-random numbers
           // draw ellipses
           ellipse(random(this.x_4 - k * 9), random(this.offset4), this.diameterLeftArm - k, this.diameterLeftArm - k);
           // right arm
           for (var l = 0; l < this.counter; l++) {
-            // to a constant to return the same pseudo-random numbers
             // draw ellipses
             ellipse(random(this.x_5 + l * 9), random(this.offset5), this.diameterRightArm - l, this.diameterRightArm - l);
           }
