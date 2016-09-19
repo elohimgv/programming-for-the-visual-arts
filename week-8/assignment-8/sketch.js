@@ -45,7 +45,11 @@ function setup() {
 function draw() {
   background(239, 116, 48);
   diagonal.popUp();
-  monster.render();
+  if (keyIsPressed == true) {
+    monster.explotion();
+  } else {
+    monster.render();
+  }
   // create animation
   linear.y1++;
   linear.y2++;
@@ -168,5 +172,36 @@ function Creature() {
     line(this.pointX_8, this.pointY_8, this.pointX_9, this.pointY_9);
     line(this.pointX_9, this.pointY_9, this.pointX_10, this.pointY_10);
     line(this.pointX_10, this.pointY_10, this.pointX_11, this.pointY_11);
+  }
+  // method explotion
+  this.explotion = function() {
+    /** legs */
+    // left leg
+    for (var i = 0; i < this.counter; i++) {
+      // to a constant to return the same pseudo-random numbers
+      randomSeed(2);
+      // draw ellipses
+      ellipse(random(this.offset2 - i + 2), random(this.y_2 + i * 11), this.diameterLeftLeg - i * 2, this.diameterLeftLeg - i * 2);
+      // right leg
+      for (var j = 0; j < this.counter; j++) {
+        // to a constant to return the same pseudo-random numbers
+        randomSeed(2);
+        // draw ellipses
+        ellipse(random(this.offset3 + j + 2), random(this.y_3 + j * 11), this.diameterRightLeg - j * 2, this.diameterRightLeg - j * 2);
+        /** arms */
+        // left arm
+        for (var k = 0; k < this.counter; k++) {
+          // to a constant to return the same pseudo-random numbers
+          // draw ellipses
+          ellipse(random(this.x_4 - k * 9), random(this.offset4), this.diameterLeftArm - k, this.diameterLeftArm - k);
+          // right arm
+          for (var l = 0; l < this.counter; l++) {
+            // to a constant to return the same pseudo-random numbers
+            // draw ellipses
+            ellipse(random(this.x_5 + l * 9), random(this.offset5), this.diameterRightArm - l, this.diameterRightArm - l);
+          }
+        }
+      }
+    }
   }
 }
