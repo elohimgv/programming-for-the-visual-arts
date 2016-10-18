@@ -18,6 +18,12 @@ var backgroundImage;
 // delcare objects
 var layout = [];
 var marker;
+// vars for ellipse
+var x;
+var y;
+var size;
+var whiteColor;
+var redColor;
 
 function preload() {
   backgroundImage = loadImage("back_image.jpg");
@@ -31,17 +37,22 @@ function setup() {
     layout.push(new Game());
   }
   marker = new Game();
+  // setup vars for ellipse
+  whiteColor = color(255, 255, 255);
+  x = 40;
+  y = height / 2;
+  size = 50;
 }
 
 function draw() {
-  var RGBcolor = color(255, 255, 255);
   // background image
   image(backgroundImage);
   // circle color
-  fill(RGBcolor);
+  fill(whiteColor);
   // to display circle
-  ellipse(40, 500 / 2, 50, 50);
+  ellipse(x, y, size, size);
   // method display()
+  fill(whiteColor);
   for (var i = 0; i < layout.length; i++) {
     layout[i].display();
   }
@@ -76,15 +87,28 @@ function Game() {
   };
 
   this.board = function() {
+    fill(255);
     // write score
     text("score", 10, 20);
     text(this.score, 50, 20);
     // write lives
-    text("lives", 10, 40)
+    text("lives", 10, 40);
     text(this.lives, 50, 40);
   };
 }
 
 function keyPressed() {
-
+  if (keyCode === LEFT_ARROW) {
+    x -= 2;
+    size = 50;
+  } else if (keyCode === RIGHT_ARROW) {
+    x += 2;
+    size = 50;
+  } else if (keyCode === UP_ARROW) {
+    y -= 2;
+    size = 50;
+  } else if (keyCode === DOWN_ARROW) {
+    y += 2;
+    size = 50;
+  }
 }
