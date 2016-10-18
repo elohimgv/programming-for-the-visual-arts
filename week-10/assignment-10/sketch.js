@@ -17,8 +17,7 @@ var soundHit;
 var backgroundImage;
 // delcare objects
 var layout = [];
-var score;
-var lives;
+var marker;
 
 function preload() {
   backgroundImage = loadImage("back_image.jpg");
@@ -31,36 +30,29 @@ function setup() {
   for (var i = 0; i < 5; i++) {
     layout.push(new Game());
   }
-  score = new Game();
-  lives = new Game();
+  marker = new Game();
 }
 
 function draw() {
   var RGBcolor = color(255, 255, 255);
-  var score = "0";
-  var lives = "0";
   // background image
   image(backgroundImage);
-  // write score
-  text("score", 10, 20);
-  text(score, 50, 20);
-  // write lives
-  text("lives", 10, 40)
-  text(lives, 50, 40);
   // circle color
   fill(RGBcolor);
   // to display circle
   ellipse(40, 500 / 2, 50, 50);
-  // score and live board
-  // rect(7, 5, 50, 50);
+  // method display()
   for (var i = 0; i < layout.length; i++) {
     layout[i].display();
   }
+  // method board()
+  marker.board();
 }
 
 // Game class
 function Game() {
-  // instance variables
+  /** instance variables */
+  // vars for display method
   // up
   this.x_up = 100;
   this.y_up = 0;
@@ -71,6 +63,9 @@ function Game() {
   this.y_down = 300;
   this.sizeWidthDown = 50;
   this.sizeHeightDown = 200;
+  // vars for board method
+  this.score = "0";
+  this.lives = "0";
 
   // instance methods
   this.display = function() {
@@ -78,7 +73,16 @@ function Game() {
       rect(this.x_up + i, this.y_up, this.sizeWidthUp, this.sizeHeightUp);
       rect(this.x_down + i, this.y_down, this.sizeWidthDown, this.sizeHeightDown);
     }
-  }
+  };
+
+  this.board = function() {
+    // write score
+    text("score", 10, 20);
+    text(this.score, 50, 20);
+    // write lives
+    text("lives", 10, 40)
+    text(this.lives, 50, 40);
+  };
 }
 
 function keyPressed() {
