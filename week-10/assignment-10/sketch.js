@@ -18,12 +18,8 @@ var backgroundImage;
 // delcare objects
 var layout = [];
 var marker;
-// vars for ellipse
-var x;
-var y;
-var size;
-var whiteColor;
-var redColor;
+var boom;
+var play;
 
 function preload() {
   backgroundImage = loadImage("back_image.jpg");
@@ -37,27 +33,21 @@ function setup() {
     layout.push(new Game());
   }
   marker = new Game();
-  // setup vars for ellipse
-  whiteColor = color(255, 255, 255);
-  x = 40;
-  y = height / 2;
-  size = 50;
+  boom = new Game();
+  play = new Game();
 }
 
 function draw() {
   // background image
   image(backgroundImage);
-  // circle color
-  fill(whiteColor);
-  // to display circle
-  ellipse(x, y, size, size);
   // method display()
-  fill(whiteColor);
   for (var i = 0; i < layout.length; i++) {
-    layout[i].display();
+    layout[i].obstacles();
   }
-  // method board()
+  // call method board()
   marker.board();
+  // call method ball()
+  play.ball();
 }
 
 // Game class
@@ -74,41 +64,74 @@ function Game() {
   this.y_down = 300;
   this.sizeWidthDown = 50;
   this.sizeHeightDown = 200;
+  // vars for ball method
+  this.x = 40;
+  this.y = height / 2;
+  this.size = 50;
+  this.whiteColor = color(255, 255, 255);
+  this.redColor = color(255, 0, 0);
   // vars for board method
   this.score = "0";
   this.lives = "0";
+  // var for detectCollision method
+  this.hit;
 
   // instance methods
-  this.display = function() {
+  this.obstacles = function() {
     for (var i = 1000; i > 0; i -= 200) {
       rect(this.x_up + i, this.y_up, this.sizeWidthUp, this.sizeHeightUp);
       rect(this.x_down + i, this.y_down, this.sizeWidthDown, this.sizeHeightDown);
     }
   };
 
+  this.ball = function() {
+    // circle white white color
+    fill(this.whiteColor);
+    // to display circle
+    ellipse(this.x, this.y, this.size, this.size);
+  };
+
+  this.detectCollision = function() {
+
+  };
+
+  this.moveLeft = function() {
+    this.x -= 5;
+    this.size = 50;
+  };
+
+  this.moveRight = function() {
+    this.x += 5;
+    this.size = 50;
+  };
+
+  this.moveUp = function() {
+    this.y -= 5;
+    this.size = 50;
+  };
+
+  this.moveDown = function() {
+    this.y += 5;
+    this.size = 50;
+  };
+
   this.board = function() {
     fill(255);
     // write score
-    text("score", 10, 20);
-    text(this.score, 50, 20);
+    text("score: " + this.score, 10, 20);
     // write lives
-    text("lives", 10, 40);
-    text(this.lives, 50, 40);
+    text("lives: " + this.lives, 10, 40);
   };
 }
 
 function keyPressed() {
   if (keyCode === LEFT_ARROW) {
-    x -= 2;
-    size = 50;
+    play.moveLeft();
   } else if (keyCode === RIGHT_ARROW) {
-    x += 2;
-    size = 50;
+    play.moveRight();
   } else if (keyCode === UP_ARROW) {
-    y -= 2;
-    size = 50;
+    play.moveUp();
   } else if (keyCode === DOWN_ARROW) {
-    y += 2;
-    size = 50;
+    play.moveDown();
   }
 }
