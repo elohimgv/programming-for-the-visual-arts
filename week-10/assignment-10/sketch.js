@@ -48,12 +48,51 @@ function draw() {
   marker.board();
   // call method ball()
   play.ball();
+  // function intro
+  intro();
+}
+
+function intro() {
+  // background image
+  image(backgroundImage);
+  // black transparent color
+  fill(0, 0, 0, 180);
+  rect(0, 0, 1000, 500);
+  // button
+  textFont("Helvetica");
+  textSize(60);
+  fill(255);
+  text("START", width / 2 - 100, height / 2 + 25);
+  noFill();
+  stroke(255);
+  strokeWeight(5);
+  rect(345, 202, 300, 100, 5);
+}
+
+function startGame() {
+
+}
+
+function gameOver() {
+
+}
+
+function keyPressed() {
+  if (keyCode === LEFT_ARROW) {
+    play.moveLeft();
+  } else if (keyCode === RIGHT_ARROW) {
+    play.moveRight();
+  } else if (keyCode === UP_ARROW) {
+    play.moveUp();
+  } else if (keyCode === DOWN_ARROW) {
+    play.moveDown();
+  }
 }
 
 // Game class
 function Game() {
   /** instance variables */
-  // vars for display method
+  // vars for obstacles method
   // up
   this.x_up = 100;
   this.y_up = 0;
@@ -118,20 +157,9 @@ function Game() {
   this.board = function() {
     fill(255);
     // write score
+    textFont("Arial");
     text("score: " + this.score, 10, 20);
     // write lives
     text("lives: " + this.lives, 10, 40);
   };
-}
-
-function keyPressed() {
-  if (keyCode === LEFT_ARROW) {
-    play.moveLeft();
-  } else if (keyCode === RIGHT_ARROW) {
-    play.moveRight();
-  } else if (keyCode === UP_ARROW) {
-    play.moveUp();
-  } else if (keyCode === DOWN_ARROW) {
-    play.moveDown();
-  }
 }
