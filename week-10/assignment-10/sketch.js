@@ -17,7 +17,6 @@ var soundHit;
 var backgroundImage;
 // delcare objects
 var layout = [];
-var marker;
 var boom;
 var play;
 // vars to display GAME OVER
@@ -39,6 +38,10 @@ var w_buttonGO;
 var h_buttonGO;
 var radiusGO;
 
+var state = 0;
+
+var lives;
+
 function preload() {
   backgroundImage = loadImage("back_image.jpg");
 }
@@ -50,20 +53,19 @@ function setup() {
   for (var i = 0; i < 5; i++) {
     layout.push(new Game());
   }
-  marker = new Game();
   boom = new Game();
   play = new Game();
-
+  // display GAME OVER
   x_Position = width / 2 - 200;
   y_Position = height / 2 + 25;
   speed = 3;
-
+  // vars intro button
   buttonIn = false;
   x_buttonIn = 345;
   y_buttonIn = 202;
   w_buttonIn = 300;
   h_buttonIn = 100;
-
+  // game over button
   buttonGO = false;
   x_buttonGO = 500 - 61;
   y_buttonGO = 390 - 20;
@@ -71,6 +73,8 @@ function setup() {
   h_buttonGO = 40;
 
   radius = 5;
+
+  lives = 3;
 }
 
 function draw() {
@@ -111,14 +115,15 @@ function intro() {
 function startGame() {
   // background image
   image(backgroundImage);
-  // call method display()
+  // call display() method
   for (var i = 0; i < layout.length; i++) {
     layout[i].obstacles();
   }
-  // call method board()
-  marker.board();
-  // call method ball()
+  // call ball() method
   play.ball();
+  // write lives
+  fill(255);
+  text("lives: " + lives, 10, 40);
 }
 
 function gameOver() {
@@ -168,7 +173,7 @@ function keyPressed() {
   // BACKSPACE, DELETE, ENTER, RETURN, TAB, ESCAPE, SHIFT, CONTROL,
   // OPTION, ALT, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW
   if (keyCode === LEFT_ARROW) {
-      play.moveLeft();
+    play.moveLeft();
   } else if (keyCode === RIGHT_ARROW) {
     // move right
     play.moveRight();
@@ -184,7 +189,7 @@ function keyPressed() {
 // Game class
 function Game() {
   /** instance variables */
-  /** vars for method obstacles */
+  /** vars for obstacles method */
   // up
   this.x_up = 100;
   this.y_up = 0;
@@ -195,7 +200,7 @@ function Game() {
   this.y_down = 300;
   this.sizeWidthDown = 50;
   this.sizeHeightDown = 200;
-  /** vars for method ball */
+  /** vars for ball method */
   this.x = 40;
   this.y = height / 2;
   this.size = 50;
@@ -203,9 +208,6 @@ function Game() {
   this.redColor = color(255, 0, 0);
   // var for detect collision
   this.hit_obstacle = false;
-  /** vars for method board */
-  this.score = "0";
-  this.lives = "0";
 
   /** instance methods */
   this.obstacles = function() {
@@ -217,31 +219,37 @@ function Game() {
   };
 
   this.ball = function() {
+    var m = 25;
+    var n = 200;
+    var o = 400;
+    var p = 600;
+    var q = 800;
+    var punch = true;
     // if statements this.hit_obstacle to control boolean state
-    if ((this.x + 25 > this.x_up + 200 && this.x < this.x_up + 200 + this.sizeWidthUp + 25) &&
-    (this.y + 25 > this.y_up && this.y < this.y_up + this.sizeHeightUp + 25)) {
-      this.hit_obstacle = true;
-    } else if ((this.x + 25 > this.x_up + 400 && this.x < this.x_up + 400 + this.sizeWidthUp + 25) &&
-    (this.y + 25 > this.y_up && this.y < this.y_up + this.sizeHeightUp + 25)) {
-      this.hit_obstacle = true;
-    } else if ((this.x + 25 > this.x_up + 600 && this.x < this.x_up + 600 + this.sizeWidthUp + 25) &&
-    (this.y + 25 > this.y_up && this.y < this.y_up + this.sizeHeightUp + 25)) {
-      this.hit_obstacle = true;
-    } else if ((this.x + 25 > this.x_up + 800 && this.x < this.x_up + 800 + this.sizeWidthUp + 25) &&
-    (this.y + 25 > this.y_up && this.y < this.y_up + this.sizeHeightUp + 25)) {
-      this.hit_obstacle = true;
-    } else if ((this.x + 25 > this.x_down + 200 && this.x < this.x_down + 200 + this.sizeWidthDown + 25) &&
-    (this.y + 25 > this.y_down && this.y < this.y_down + this.sizeHeightDown + 25)) {
-      this.hit_obstacle = true;
-    } else if ((this.x + 25 > this.x_down + 400 && this.x < this.x_down + 400 + this.sizeWidthDown + 25) &&
-    (this.y + 25 > this.y_down && this.y < this.y_down + this.sizeHeightDown + 25)) {
-      this.hit_obstacle = true;
-    } else if ((this.x + 25 > this.x_down + 600 && this.x < this.x_down + 600 + this.sizeWidthDown + 25) &&
-    (this.y + 25 > this.y_down && this.y < this.y_down + this.sizeHeightDown + 25)) {
-      this.hit_obstacle = true;
-    } else if ((this.x + 25 > this.x_down + 800 && this.x < this.x_down + 800 + this.sizeWidthDown + 25) &&
-    (this.y + 25 > this.y_down && this.y < this.y_down + this.sizeHeightDown + 25)) {
-      this.hit_obstacle = true;
+    if ((this.x + m > this.x_up + n && this.x < this.x_up + n + this.sizeWidthUp + m) &&
+    (this.y + m > this.y_up && this.y < this.y_up + this.sizeHeightUp + m)) {
+      this.hit_obstacle = punch;
+    } else if ((this.x + m > this.x_up + o && this.x < this.x_up + o + this.sizeWidthUp + m) &&
+    (this.y + m > this.y_up && this.y < this.y_up + this.sizeHeightUp + m)) {
+      this.hit_obstacle = punch;
+    } else if ((this.x + m > this.x_up + p && this.x < this.x_up + p + this.sizeWidthUp + m) &&
+    (this.y + m > this.y_up && this.y < this.y_up + this.sizeHeightUp + m)) {
+      this.hit_obstacle = punch;
+    } else if ((this.x + m > this.x_up + q && this.x < this.x_up + q + this.sizeWidthUp + m) &&
+    (this.y + m > this.y_up && this.y < this.y_up + this.sizeHeightUp + m)) {
+      this.hit_obstacle = punch;
+    } else if ((this.x + m > this.x_down + n && this.x < this.x_down + n + this.sizeWidthDown + m) &&
+    (this.y + m > this.y_down && this.y < this.y_down + this.sizeHeightDown + m)) {
+      this.hit_obstacle = punch;
+    } else if ((this.x + m > this.x_down + o && this.x < this.x_down + o + this.sizeWidthDown + m) &&
+    (this.y + m > this.y_down && this.y < this.y_down + this.sizeHeightDown + m)) {
+      this.hit_obstacle = punch;
+    } else if ((this.x + m > this.x_down + p && this.x < this.x_down + p + this.sizeWidthDown + m) &&
+    (this.y + m > this.y_down && this.y < this.y_down + this.sizeHeightDown + m)) {
+      this.hit_obstacle = punch;
+    } else if ((this.x + m > this.x_down + q && this.x < this.x_down + q + this.sizeWidthDown + m) &&
+    (this.y + m > this.y_down && this.y < this.y_down + this.sizeHeightDown + m)) {
+      this.hit_obstacle = punch;
     } else {
       this.hit_obstacle = false;
     }
@@ -249,11 +257,12 @@ function Game() {
     if (this.hit_obstacle) {
       // circle red color
       fill(this.redColor);
+      // call board() method
+      this.board();
     } else {
       // circle white white color
       fill(this.whiteColor);
     }
-
     // to display circle
     ellipse(this.x, this.y, this.size, this.size);
   };
@@ -291,11 +300,6 @@ function Game() {
   };
 
   this.board = function() {
-    fill(255);
-    // write score
-    textFont("Arial");
-    text("score: " + this.score, 10, 20);
-    // write lives
-    text("lives: " + this.lives, 10, 40);
+    lives--;
   };
 }
