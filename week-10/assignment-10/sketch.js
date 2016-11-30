@@ -173,6 +173,7 @@ function keyPressed() {
   // BACKSPACE, DELETE, ENTER, RETURN, TAB, ESCAPE, SHIFT, CONTROL,
   // OPTION, ALT, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW
   if (keyCode === LEFT_ARROW) {
+    // move left
     play.moveLeft();
   } else if (keyCode === RIGHT_ARROW) {
     // move right
@@ -194,75 +195,114 @@ function Game() {
   this.x_up = 100;
   this.y_up = 0;
   this.sizeWidthUp = 50;
-  this.sizeHeightUp = 200;
+  // PAY ATENTION... this.sizeHeightUp = 200;
+  this.sizeHeightUp = 50; // 50
   // down
   this.x_down = 100;
-  this.y_down = 300;
+  // PAY ATENTION... this.y_down = 300;
+  this.y_down = 450; // ?
   this.sizeWidthDown = 50;
   this.sizeHeightDown = 200;
+  // var to change motion size (y)
+  this.changeSizeUp = 1;
+  this.changeSizeDown = 1;
+  // alpha value for obstacles method
+  this.alpha = 10;
+  // var to change the alpha value
+  this.changeAlpha = 1;
   /** vars for ball method */
   this.x = 40;
   this.y = height / 2;
   this.size = 50;
-  this.whiteColor = color(255, 255, 255);
-  this.redColor = color(255, 0, 0);
+  this.green = 255;
+  this.blue = 255;
   // var for detect collision
   this.hit_obstacle = false;
 
   /** instance methods */
   this.obstacles = function() {
     // display rects "obstacles"
-    for (var i = 1000; i > 0; i -= 200) {
+    noStroke();
+    // add the current change of motion size (y)
+    this.sizeHeightUp = this.sizeHeightUp + this.changeSizeUp;
+    if ((this.sizeHeightUp > 199) || (this.sizeHeightUp < 51)) {
+      this.changeSizeUp = this.changeSizeUp * - 1;
+    }
+    this.y_down = this.y_down + this.changeSizeDown;
+    if ((this.y_down > 451) || (this.y_down < 299)) {
+      this.changeSizeDown = this.changeSizeDown * - 1;
+    }
+    // add the current change of motion alpha value
+    this.alpha = this.alpha + this.changeAlpha;
+    if ((this.alpha > 49 ) || (this.alpha < 6)) {
+      this.changeAlpha = this.changeAlpha * - 1;
+    }
+    this.color_obstacles = color(255, this.alpha);
+    fill(this.color_obstacles);
+    for (var i = 1000, j = 1000; i > 0, j > 0; i -= 250, j -= 200) {
       rect(this.x_up + i, this.y_up, this.sizeWidthUp, this.sizeHeightUp);
-      rect(this.x_down + i, this.y_down, this.sizeWidthDown, this.sizeHeightDown);
+      rect(this.x_down + j, this.y_down, this.sizeWidthDown, this.sizeHeightDown);
     }
   };
 
   this.ball = function() {
     var m = 25;
-    var n = 200;
-    var o = 400;
-    var p = 600;
-    var q = 800;
+    var n_up =250;
+    var o_up = 500;
+    var p_up = 750;
+    var q_up = 1000;
+    var n_down = 200;
+    var o_down = 400;
+    var p_down = 600;
+    var q_down = 800;
     var punch = true;
     // if statements this.hit_obstacle to control boolean state
-    if ((this.x + m > this.x_up + n && this.x < this.x_up + n + this.sizeWidthUp + m) &&
+    if ((this.x + m > this.x_up + n_up && this.x < this.x_up + n_up + this.sizeWidthUp + m) &&
     (this.y + m > this.y_up && this.y < this.y_up + this.sizeHeightUp + m)) {
       this.hit_obstacle = punch;
-    } else if ((this.x + m > this.x_up + o && this.x < this.x_up + o + this.sizeWidthUp + m) &&
+    } else if ((this.x + m > this.x_up + o_up && this.x < this.x_up + o_up + this.sizeWidthUp + m) &&
     (this.y + m > this.y_up && this.y < this.y_up + this.sizeHeightUp + m)) {
       this.hit_obstacle = punch;
-    } else if ((this.x + m > this.x_up + p && this.x < this.x_up + p + this.sizeWidthUp + m) &&
+    } else if ((this.x + m > this.x_up + p_up && this.x < this.x_up + p_up + this.sizeWidthUp + m) &&
     (this.y + m > this.y_up && this.y < this.y_up + this.sizeHeightUp + m)) {
       this.hit_obstacle = punch;
-    } else if ((this.x + m > this.x_up + q && this.x < this.x_up + q + this.sizeWidthUp + m) &&
+    } else if ((this.x + m > this.x_up + q_up && this.x < this.x_up + q_up + this.sizeWidthUp + m) &&
     (this.y + m > this.y_up && this.y < this.y_up + this.sizeHeightUp + m)) {
       this.hit_obstacle = punch;
-    } else if ((this.x + m > this.x_down + n && this.x < this.x_down + n + this.sizeWidthDown + m) &&
+    } else if ((this.x + m > this.x_down + n_down && this.x < this.x_down + n_down + this.sizeWidthDown + m) &&
     (this.y + m > this.y_down && this.y < this.y_down + this.sizeHeightDown + m)) {
       this.hit_obstacle = punch;
-    } else if ((this.x + m > this.x_down + o && this.x < this.x_down + o + this.sizeWidthDown + m) &&
+    } else if ((this.x + m > this.x_down + o_down && this.x < this.x_down + o_down + this.sizeWidthDown + m) &&
     (this.y + m > this.y_down && this.y < this.y_down + this.sizeHeightDown + m)) {
       this.hit_obstacle = punch;
-    } else if ((this.x + m > this.x_down + p && this.x < this.x_down + p + this.sizeWidthDown + m) &&
+    } else if ((this.x + m > this.x_down + p_down && this.x < this.x_down + p_down + this.sizeWidthDown + m) &&
     (this.y + m > this.y_down && this.y < this.y_down + this.sizeHeightDown + m)) {
       this.hit_obstacle = punch;
-    } else if ((this.x + m > this.x_down + q && this.x < this.x_down + q + this.sizeWidthDown + m) &&
+    } else if ((this.x + m > this.x_down + q_down && this.x < this.x_down + q_down + this.sizeWidthDown + m) &&
     (this.y + m > this.y_down && this.y < this.y_down + this.sizeHeightDown + m)) {
       this.hit_obstacle = punch;
     } else {
       this.hit_obstacle = false;
     }
+
+    this.color_ball = color(255, this.green, this.blue);
     // if statement this.hit_obstacle to control color
     if (this.hit_obstacle) {
-      // circle red color
-      fill(this.redColor);
+      // circle RED color
       // call board() method
       this.board();
+      // set back to the initial position
+      this.x = 40;
+      this.y = height / 2;
+      this.size = 50;
+      this.green = 0;
+      this.blue = 0;
     } else {
-      // circle white white color
-      fill(this.whiteColor);
+      // circle WHITE color
+      this.green += 5;
+      this.blue += 5;
     }
+    fill(this.color_ball);
     // to display circle
     ellipse(this.x, this.y, this.size, this.size);
   };
@@ -295,7 +335,7 @@ function Game() {
     if (this.y === 475) {
       this.y = 475;
     } else {
-    this.y += 5;
+      this.y += 5;
     }
   };
 
