@@ -17,7 +17,7 @@ var soundHit;
 var backgroundImage;
 // delcare objects
 var layout = [];
-var boom;
+
 var play;
 // vars to display GAME OVER
 var x_Position;
@@ -50,10 +50,10 @@ function setup() {
   // size canvas
   createCanvas(1000, 500);
   // create objects
-  for (var i = 0; i < 5; i++) {
+  for (var i = 0; i < 1; i++) {
     layout.push(new Game());
   }
-  boom = new Game();
+
   play = new Game();
   // display GAME OVER
   x_Position = width / 2 - 200;
@@ -115,7 +115,7 @@ function intro() {
 function startGame() {
   // background image
   image(backgroundImage);
-  // call display() method
+  // call obstacles() method
   for (var i = 0; i < layout.length; i++) {
     layout[i].obstacles();
   }
@@ -192,7 +192,7 @@ function Game() {
   /** instance variables */
   /** vars for obstacles method */
   // up
-  this.x_up = 100;
+  this.x_up = random(width - 900, width - 100); // 100
   this.y_up = 0;
   this.sizeWidthUp = 50;
   // PAY ATENTION... this.sizeHeightUp = 200;
@@ -200,7 +200,7 @@ function Game() {
   // down
   this.x_down = 100;
   // PAY ATENTION... this.y_down = 300;
-  this.y_down = 450; // ?
+  this.y_down = 450; // 450
   this.sizeWidthDown = 50;
   this.sizeHeightDown = 200;
   // var to change motion size (y)
@@ -217,12 +217,10 @@ function Game() {
   this.green = 255;
   this.blue = 255;
   // var for detect collision
-  this.hit_obstacle = false;
+  this.hit_obstacle;
 
   /** instance methods */
-  this.obstacles = function() {
-    // display rects "obstacles"
-    noStroke();
+  this.obstaclesMotion = function() {
     // add the current change of motion size (y)
     this.sizeHeightUp = this.sizeHeightUp + this.changeSizeUp;
     if ((this.sizeHeightUp > 199) || (this.sizeHeightUp < 51)) {
@@ -239,52 +237,44 @@ function Game() {
     }
     this.color_obstacles = color(255, this.alpha);
     fill(this.color_obstacles);
-    for (var i = 1000, j = 1000; i > 0, j > 0; i -= 250, j -= 200) {
-      rect(this.x_up + i, this.y_up, this.sizeWidthUp, this.sizeHeightUp);
-      rect(this.x_down + j, this.y_down, this.sizeWidthDown, this.sizeHeightDown);
+  };
+
+  this.obstacles = function() {
+    // add motion to obstacles
+    this.obstaclesMotion();
+    // display rects "obstacles"
+    noStroke();
+    rect(this.x_up, this.y_up, this.sizeWidthUp, this.sizeHeightUp);
+    rect(this.x_down, this.y_down, this.sizeWidthDown, this.sizeHeightDown);
+  };
+
+  this.hit = function() {
+    // increment and decrement this.sizeHeightUp and this.y_down values
+    // to be able to ball hit obstacles
+    this.sizeHeightUp = this.sizeHeightUp + this.changeSizeUp;
+    if ((this.sizeHeightUp > 199) || (this.sizeHeightUp < 51)) {
+      this.changeSizeUp = this.changeSizeUp * - 1;
+    }
+    this.y_down = this.y_down + this.changeSizeDown;
+    if ((this.y_down > 451) || (this.y_down < 299)) {
+      this.changeSizeDown = this.changeSizeDown * - 1;
+    }
+
+    var left = (this.x + this.size / 2 > this.x_up);
+    var right = (this.x - this.size / 2 < this.x_up + this.sizeWidthUp);
+    var top = (this.y + this.size / 2 > this.y_up);
+    var bottom = (this.y - this.size / 2 < this.y_up + this.sizeHeightUp);
+
+    // if statements this.hit_obstacle to control boolean state
+    if (left && right && top && bottom) {
+      this.hit_obstacle = true;
+    } else {
+      this.hit_obstacle = false;
     }
   };
 
   this.ball = function() {
-    var m = 25;
-    var n_up =250;
-    var o_up = 500;
-    var p_up = 750;
-    var q_up = 1000;
-    var n_down = 200;
-    var o_down = 400;
-    var p_down = 600;
-    var q_down = 800;
-    var punch = true;
-    // if statements this.hit_obstacle to control boolean state
-    if ((this.x + m > this.x_up + n_up && this.x < this.x_up + n_up + this.sizeWidthUp + m) &&
-    (this.y + m > this.y_up && this.y < this.y_up + this.sizeHeightUp + m)) {
-      this.hit_obstacle = punch;
-    } else if ((this.x + m > this.x_up + o_up && this.x < this.x_up + o_up + this.sizeWidthUp + m) &&
-    (this.y + m > this.y_up && this.y < this.y_up + this.sizeHeightUp + m)) {
-      this.hit_obstacle = punch;
-    } else if ((this.x + m > this.x_up + p_up && this.x < this.x_up + p_up + this.sizeWidthUp + m) &&
-    (this.y + m > this.y_up && this.y < this.y_up + this.sizeHeightUp + m)) {
-      this.hit_obstacle = punch;
-    } else if ((this.x + m > this.x_up + q_up && this.x < this.x_up + q_up + this.sizeWidthUp + m) &&
-    (this.y + m > this.y_up && this.y < this.y_up + this.sizeHeightUp + m)) {
-      this.hit_obstacle = punch;
-    } else if ((this.x + m > this.x_down + n_down && this.x < this.x_down + n_down + this.sizeWidthDown + m) &&
-    (this.y + m > this.y_down && this.y < this.y_down + this.sizeHeightDown + m)) {
-      this.hit_obstacle = punch;
-    } else if ((this.x + m > this.x_down + o_down && this.x < this.x_down + o_down + this.sizeWidthDown + m) &&
-    (this.y + m > this.y_down && this.y < this.y_down + this.sizeHeightDown + m)) {
-      this.hit_obstacle = punch;
-    } else if ((this.x + m > this.x_down + p_down && this.x < this.x_down + p_down + this.sizeWidthDown + m) &&
-    (this.y + m > this.y_down && this.y < this.y_down + this.sizeHeightDown + m)) {
-      this.hit_obstacle = punch;
-    } else if ((this.x + m > this.x_down + q_down && this.x < this.x_down + q_down + this.sizeWidthDown + m) &&
-    (this.y + m > this.y_down && this.y < this.y_down + this.sizeHeightDown + m)) {
-      this.hit_obstacle = punch;
-    } else {
-      this.hit_obstacle = false;
-    }
-
+    this.hit();
     this.color_ball = color(255, this.green, this.blue);
     // if statement this.hit_obstacle to control color
     if (this.hit_obstacle) {
