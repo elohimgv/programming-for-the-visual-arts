@@ -49,7 +49,7 @@ function setup() {
   // size canvas
   createCanvas(1000, 500);
   // create objects
-  for (var i = 0; i < 4; i++) {
+  for (var i = 0; i < 5; i++) {
     layout.push(new Game());
   }
 
@@ -89,7 +89,8 @@ function intro() {
   fill(0, 0, 0, 180);
   rect(0, 0, 1000, 500);
   // if statement button to control boolean state
-  if ((mouseX > x_buttonIn && mouseX < x_buttonIn + w_buttonIn) && (mouseY > y_buttonIn && mouseY < y_buttonIn + h_buttonIn)) {
+  if ((mouseX > x_buttonIn && mouseX < x_buttonIn + w_buttonIn) &&
+    (mouseY > y_buttonIn && mouseY < y_buttonIn + h_buttonIn)) {
     buttonIn = true;
   } else {
     buttonIn = false;
@@ -145,7 +146,8 @@ function gameOver() {
   textSize(30);
   text("Would you like to play a game?", width / 2 - 210, height / 2 + 100 );
   // if statement button to control boolean state
-  if ((mouseX > x_buttonGO && mouseX < x_buttonGO + w_buttonGO) && (mouseY > y_buttonGO && mouseY < y_buttonGO + h_buttonGO)) {
+  if ((mouseX > x_buttonGO && mouseX < x_buttonGO + w_buttonGO) &&
+    (mouseY > y_buttonGO && mouseY < y_buttonGO + h_buttonGO)) {
     buttonGO = true;
   } else {
     buttonGO = false;

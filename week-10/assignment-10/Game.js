@@ -7,16 +7,19 @@ function Game() {
   this.y_up = 0;
   this.sizeWidthUp = 50;
   // PAY ATENTION... this.sizeHeightUp = 200;
-  this.sizeHeightUp = 50; // 50
+  this.sizeHeightUp = 90; // 50
   // down
-  this.x_down = 100;
+  this.x_down = random(width - 900, width - 100); // 100
   // PAY ATENTION... this.y_down = 300;
-  this.y_down = 450; // 450
+  this.y_down = 360; // 450
   this.sizeWidthDown = 50;
-  this.sizeHeightDown = 200;
+  this.sizeHeightDown = 320;
   // var to change motion size (y)
   this.changeSizeUp = 1;
   this.changeSizeDown = 1;
+  // random vars to taste if into obstaclesMotion
+  this.rUp = random(199, 350);
+  this.rDown = random(299, 150);
   // alpha value for obstacles method
   this.alpha = 10;
   // var to change the alpha value
@@ -34,11 +37,11 @@ function Game() {
   this.obstaclesMotion = function() {
     // add the current change of motion size (y)
     this.sizeHeightUp = this.sizeHeightUp + this.changeSizeUp;
-    if ((this.sizeHeightUp > 199) || (this.sizeHeightUp < 51)) {
+    if ((this.sizeHeightUp > this.rUp) || (this.sizeHeightUp < 91)) { // >199 || <51
       this.changeSizeUp = this.changeSizeUp * - 1;
     }
     this.y_down = this.y_down + this.changeSizeDown;
-    if ((this.y_down > 451) || (this.y_down < 299)) {
+    if ((this.y_down > 361) || (this.y_down < this.rDown)) { // >451 || <299
       this.changeSizeDown = this.changeSizeDown * - 1;
     }
     // add the current change of motion alpha value
@@ -51,7 +54,7 @@ function Game() {
   };
 
   this.obstacles = function() {
-    // add motion to obstacles
+     // add motion to obstacles
     this.obstaclesMotion();
     // display rects "obstacles"
     noStroke();
@@ -63,21 +66,28 @@ function Game() {
     // increment and decrement this.sizeHeightUp and this.y_down values
     // to be able to ball hit obstacles
     this.sizeHeightUp = this.sizeHeightUp + this.changeSizeUp;
-    if ((this.sizeHeightUp > 199) || (this.sizeHeightUp < 51)) {
+    if ((this.sizeHeightUp > this.rUp) || (this.sizeHeightUp < 91)) { 
       this.changeSizeUp = this.changeSizeUp * - 1;
     }
     this.y_down = this.y_down + this.changeSizeDown;
-    if ((this.y_down > 451) || (this.y_down < 299)) {
+    if ((this.y_down > 361) || (this.y_down < this.rDown)) {
       this.changeSizeDown = this.changeSizeDown * - 1;
     }
 
-    var left = (this.x + this.size / 2 > this.x_up);
-    var right = (this.x - this.size / 2 < this.x_up + this.sizeWidthUp);
-    var top = (this.y + this.size / 2 > this.y_up);
-    var bottom = (this.y - this.size / 2 < this.y_up + this.sizeHeightUp);
+    // UP rectangles
+    var left_up = (this.x + this.size / 2 > this.x_up);
+    var right_up = (this.x - this.size / 2 < this.x_up + this.sizeWidthUp);
+    var top_up = (this.y + this.size / 2 > this.y_up);
+    var bottom_up = (this.y - this.size / 2 < this.y_up + this.sizeHeightUp);
+    // DOWN rectangles
+    var left_down = (this.x + this.size / 2 > this.x_down);
+    var right_down = (this.x - this.size / 2 < this.x_down + this.sizeWidthDown);
+    var top_down = (this.y + this.size / 2 > this.y_down);
+    var bottom_down = (this.y - this.size / 2 < this.y_down + this.sizeHeightDown);
 
     // if statements this.hit_obstacle to control boolean state
-    if (left && right && top && bottom) {
+    if ((left_up && right_up && top_up && bottom_up) ||
+      (left_down && right_down && top_down && bottom_down)) {
       this.hit_obstacle = true;
     } else {
       this.hit_obstacle = false;
@@ -109,7 +119,7 @@ function Game() {
   };
 
   this.moveLeft = function() {
-    if (this.x === 25) {
+    if (this.x == 25) {
       this.x = 25;
     } else {
       this.x -= 5;
@@ -117,7 +127,7 @@ function Game() {
   };
 
   this.moveRight = function() {
-    if (this.x === 975) {
+    if (this.x == 975) {
       this.x = 975;
     } else {
       this.x += 5;
@@ -125,7 +135,7 @@ function Game() {
   };
 
   this.moveUp = function() {
-    if (this.y === 25) {
+    if (this.y == 25) {
       this.y = 25;
     } else {
       this.y -= 5;
@@ -133,7 +143,7 @@ function Game() {
   };
 
   this.moveDown = function() {
-    if (this.y === 475) {
+    if (this.y == 475) {
       this.y = 475;
     } else {
       this.y += 5;
