@@ -66,7 +66,7 @@ function Game() {
     // increment and decrement this.sizeHeightUp and this.y_down values
     // to be able to ball hit obstacles
     this.sizeHeightUp = this.sizeHeightUp + this.changeSizeUp;
-    if ((this.sizeHeightUp > this.rUp) || (this.sizeHeightUp < 91)) { 
+    if ((this.sizeHeightUp > this.rUp) || (this.sizeHeightUp < 91)) {
       this.changeSizeUp = this.changeSizeUp * - 1;
     }
     this.y_down = this.y_down + this.changeSizeDown;

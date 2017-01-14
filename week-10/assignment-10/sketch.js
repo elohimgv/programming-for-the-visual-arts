@@ -37,9 +37,9 @@ var w_buttonGO;
 var h_buttonGO;
 var radiusGO;
 
-var state = 0;
-
 var lives;
+
+var state = 0;
 
 function preload() {
   backgroundImage = loadImage("back_image.jpg");
@@ -49,16 +49,15 @@ function setup() {
   // size canvas
   createCanvas(1000, 500);
   // create objects
-  for (var i = 0; i < 5; i++) {
+  for (var i = 0; i < 4; i++) {
     layout.push(new Game());
   }
-
   play = new Game();
   // display GAME OVER
   x_Position = width / 2 - 200;
   y_Position = height / 2 + 25;
   speed = 3;
-  // vars intro button
+  // intro button
   buttonIn = false;
   x_buttonIn = 345;
   y_buttonIn = 202;
@@ -72,17 +71,18 @@ function setup() {
   h_buttonGO = 40;
 
   radius = 5;
-
-  lives = 3;
 }
 
 function draw() {
-  // intro();
-  startGame();
-  // gameOver();
+  if (state == 0) {
+    intro();
+  } else if (state == 1) {
+    startGame();
+  }
 }
 
 function intro() {
+  lives = 3;
   // background image
   image(backgroundImage);
   // black transparent color
@@ -96,8 +96,9 @@ function intro() {
     buttonIn = false;
   }
   // if statement button to control color
+  var rgb = color(0, 155, 0)
   if (buttonIn) {
-    fill(0, 155, 0);
+    fill(rgb);
   } else {
     noFill();
   }
@@ -124,6 +125,10 @@ function startGame() {
   // write lives
   fill(255);
   text("lives: " + lives, 10, 40);
+    // if lives are 0 launch gameOver() function
+  if (lives == 0) {
+    gameOver();
+  }
 }
 
 function gameOver() {
@@ -167,6 +172,16 @@ function gameOver() {
   noStroke();
   fill(255);
   text("yes", width / 2, 396);
+}
+
+function mouseReleased() {
+  if ((mouseX > x_buttonIn && mouseX < x_buttonIn + w_buttonIn) &&
+    (mouseY > y_buttonIn && mouseY < y_buttonIn + h_buttonIn)) {
+    state = 1;
+  } else if ((mouseX > x_buttonGO && mouseX < x_buttonGO + w_buttonGO) &&
+    (mouseY > y_buttonGO && mouseY < y_buttonGO + h_buttonGO)) {
+    state = 0;
+  }
 }
 
 function keyPressed() {
