@@ -4,10 +4,9 @@
 *
 * Assignment 8: Data Visualization
 *
-* MOOC: Introduction to Programming For The Visual Arts with p5.js
+* assignment sataus: UNFINISHED
 *
-* Note: the code dosen´t run on browser like Crhome, Chrome Canary,
-* Microsoft Edge, just run on Mozilla Firefox.
+* MOOC: Introduction to Programming For The Visual Arts with p5.js
 *
 * The information was collected frow my personal twitter account
 * with app TAGS https://tags.hawksey.info/
