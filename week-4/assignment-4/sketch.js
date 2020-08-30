@@ -5,8 +5,6 @@
 * Assignment 4: Collage
 * Note: It is not exactly a collage, but I like the form
 * in that I´ve attacked the assignment.
-* Also the code dosen´t run on browser like Crhome, Chrome Canary
-* just run on Mozilla Firefox and Microsoft Edge.
 *
 * MOOC: Introduction to Programming For The Visual Arts with p5.js
 *
