@@ -4,10 +4,6 @@
 *
 * Assignment 1: Port an Image to Code
 *
-* MOOC: Introduction to Programming For The Visual Arts with p5.js
-*
-* Platform: https://www.kadenze.com/
-*
 * Image:
 *       + "Dream City" by Paul Klee
 *       + 1921
@@ -15,28 +11,28 @@
 *
 */
 
-// declare variable for image
-var img;
+// Declare variable for image
+let img;
 
 function preload() {
-  // initialize variable for image
+  // Initialize variable for image
   img = loadImage("data/crop.jpg");
 }
 
 function setup() {
-  // set up size canvas
+  // Set up size canvas
   createCanvas(399, 591);
 }
 
 function draw() {
-  // background(255);
-  // set up image
+  //background(255);
+  // Set up image
   image(img, 0, 0, width, height);
   fill(0);
   noStroke();
   quad(181.09, 265.09, 181.09, 591, 399, 591, 399, 265.09);
 
-  // begin shapes
+  // Begin shapes
   stroke(1);
   // 1
   fill(64, 124, 96);
