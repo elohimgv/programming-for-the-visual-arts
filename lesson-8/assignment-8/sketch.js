@@ -4,30 +4,26 @@
 *
 * Assignment 8: Terrarium
 *
-* MOOC: Introduction to Programming For The Visual Arts with p5.js
-*
-* Platform: https://www.kadenze.com/
-*
 */
 
 // declare object
-var monster;
+let monster;
 /** objects in javascript sintaxis */
 // object to create a motion line with a size of width
-var linear = {
+let linear = {
   "x1": "0",
   "y1": "0",
   "x2": "800",
   "y2": "0"
 }
 // object to create a motion diagonal ine
-var diagonal = {
+let diagonal = {
   "x1": "700",
   "y1": "400",
   "x2": "700",
   "y2": "400",
   popUp: function() {
-    var track = 0;
+    let track = 0;
     while (track < 50) {
       line(random(this.x1), random(this.y1), random(this.x2), random(this.y2));
       track++;
@@ -36,9 +32,9 @@ var diagonal = {
 }
 
 function setup() {
-  // size of canvas 
+  // Canvas size 
   createCanvas(800, 500);
-  // create object
+  // Create object
   monster = new Creature();
 }
 
@@ -50,25 +46,25 @@ function draw() {
   } else {
     monster.render();
   }
-  // create animation
+  // Create animation
   linear.y1++;
   linear.y2++;
   line(linear.x1, linear.y1, linear.x2, linear.y2);
   if (linear.y1 > 500 && linear.y2 > 500) {
-    // update
+    // Update
     linear.y1 = 0;
     linear.y2 = 0;
   }
 }
 
-// Creature class
+// Creature object
 function Creature() {
   /** fields render method */
   // field loop
   this.counter = 12;
   // fields for big circle
-  this.x_1 = width / 2; //width / 2
-  this.y_1 = height / 2; //height / 2
+  this.x_1 = width / 2; 
+  this.y_1 = height / 2; 
   this.diameterBig = 200;
   // fields for left leg
   this.x_2;
