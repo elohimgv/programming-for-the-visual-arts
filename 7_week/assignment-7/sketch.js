@@ -1,103 +1,104 @@
 /**
 *
-* Author: Elohim Guevara Varela
+* Author: Elohim Guevara
 *
 * Assignment 7: Typography
 *
-* MOOC: Introduction to Programming For The Visual Arts with p5.js
-*
-* Platform: https://www.kadenze.com/
-*
 */
 
-// variable for change to state to state
-var state = 1;
-// variable for background image
-var kim;
-// variable for function letter_look_4()
-var k;
-// variable for function letter_look_5()
-var m = 5;
-// variable for function letter_look_6()
-var  k_1;
-// variables for function letter_look_7()
-x_1 = 80;
-y_1 = 94;
-x_2 = 107;
-y_2 = 274;
-x_3 = 80;
-y_3 = 180;
-x_4 = 130;
-y_4 = 115;
-x_5 = 80;
-y_5 = 180;
-x_6 = 135;
-y_6 = 274;
-// variable for function letter_look_10()
-var k_2;
-// variable for function letter_look_11()
-var letterK_1;
-// variable for function letter_look_12()
-var letterK_2;
+// Var for change to state to state
+let state = 1;
+// Variable for background image
+let kim;
+// Var for drawLetter4 function
+let k1;
+//  Var for drawLetter5 function
+let m = 5;
+// Var for drawLetter6 function
+let  k2;
+// Arrays for drawLetter7 function
+let x = [80, 107, 80, 130, 80, 135];
+let y = [94, 274, 180, 115, 180, 274];
+// Var for drawLetter10 function
+let k3;
+// Var for drawLetter11 function
+let letterK1;
+// Var for drawLetter12 function
+let letterK2;
 
 function preload() {
-  // load an images
+  // Load an images
   kim = loadImage("images/kim.jpg");
-  k = loadImage("images/k.png");
-  k_1 = loadImage("images/k_1.png");
-  k_2 = loadImage("images/k_2.png");
+  k1 = loadImage("images/k.png");
+  k2 = loadImage("images/k_1.png");
+  k3 = loadImage("images/k_2.png");
 }
 
 function setup() {
-  // size of the canvas
+  // Canvas size
   createCanvas(300, 400);
-  // features for font function letter_look_11()
+  // Features for font - drawLetter11 function
   textFont("Baloo Paaji");
   textAlign(CENTER);
-  letterK_1 = "k";
-  // features for font function letter_look_12()
+  letterK1 = "k";
+  // Features for font - drawLetter12 function
   textFont("Pacifico");
-  letterK_2 = "k!";
+  letterK2 = "k!";
 }
 
 function draw() {
-  // image background
+  // Image background
   image(kim);
-  // color to image background with alpha value (transparency)
+  // Color to image background with 
+  // alpha value (transparency)
   fill(240, 70, 218, 130);
   rect(0, 0, 300, 400);
-  // conditions for chage to state to state
-  if (state == 1) {
-    drawLetter_1();
-  } else if (state == 2) {
-    drawLetter_2();
-  } else if (state == 3) {
-    drawLetter_3();
-  } else if (state == 4) {
-    drawLetter_4();
-  } else if (state == 5) {
-    drawLetter_5(m);
-  } else if (state == 6) {
-    drawLetter_6();
-  } else if (state == 7) {
-    drawLetter_7();
-  } else if (state == 8) {
-    drawLetter_8();
-  } else if (state == 9) {
-    drawLetter_9();
-  } else if (state == 10) {
-    drawLetter_10(100, 20, 60, 82, 10);
-  } else if (state == 11) {
-    drawLetter_11();
-  } else if (state == 12) {
-    drawLetter_12();
+  // Change state
+  switch (state) {
+    case 1:
+      drawLetter1();
+      break;
+    case 2:
+      drawLetter2();
+      break;
+    case 3:
+      drawLetter3();
+      break;
+    case 4:
+      drawLetter4();
+      break;
+    case 5:
+      drawLetter5(m);
+      break;
+    case 6:
+      drawLetter6();
+      break;
+    case 7:
+      drawLetter7();
+      break;
+    case 8:
+      drawLetter8();
+      break;
+    case 9:
+      drawLetter9();
+      break;
+    case 10:
+      drawLetter10(100, 20, 60, 82, 10);
+      break;
+    case 11:
+      drawLetter11();
+      break;
+    case 12:
+      drawLetter12();
+      break;
   }
 }
 
-function drawLetter_1() {
+// Letter "K" shape 1
+function drawLetter1() {
   // letter "K" shape 1
-  var counter = 0;
-  var space = 5;
+  let counter = 0;
+  let space = 5;
   while (counter < 5) {
     counter++;
     fill(244 + (counter * space), 070 + (counter * space), 017 + (counter * space));
@@ -120,15 +121,16 @@ function drawLetter_1() {
   }
 }
 
-function drawLetter_2() {
-  // letter "K" shape 2
-  // if repet is "something value" will be the half of "K shapes" (e.g. repet = 10 - will be 5 K)
-  var repet = 10;
-  var n = 2;
-  var plus = 10;
-  for (var i = 0; i < repet; i++) {
-    // down K
-    for (var downK  = repet - 1; downK > 0; downK--) {
+// Letter "K" shape 2
+function drawLetter2() {
+  let repet = 10;
+  let n = 2;
+  let plus = 10;
+  stroke(0);
+  strokeWeight(1);
+  for (let i = 0; i < repet; i++) {
+    // Down K
+    for (let downK  = repet - 1; downK > 0; downK--) {
       fill(230 + downK * 6);
       beginShape();
       vertex((107.33 / n) + (downK + plus), (94.33 / n) + (downK + plus));
@@ -146,8 +148,8 @@ function drawLetter_2() {
       vertex((107.33 / n) + (downK + plus), (94.33 / n) + (downK + plus));
       endShape();
     }
-    // above K
-    for (var aboveK = 0; aboveK <= i + 1; aboveK++) {
+    // Above K
+    for (let aboveK = 0; aboveK <= i + 1; aboveK++) {
       fill(244, 070, 017);
       beginShape();
       vertex((107.33 / n) - (aboveK + plus), (94.33 / n) - (aboveK + plus));
@@ -168,8 +170,9 @@ function drawLetter_2() {
   }
 }
 
-function drawLetter_3() {
-  // letter "K" shape 3
+// Letter "K" shape 3
+function drawLetter3() {
+  stroke(0);
   strokeWeight(5);
   beginShape();
   vertex(107.33, 94.33);
@@ -187,7 +190,7 @@ function drawLetter_3() {
   vertex(107.33, 94.33);
   endShape();
 
-  // ellipses
+  // Ellipses
   fill(255);
   ellipse(107.33, 94.33, 15, 15);
   ellipse(107.33, 274.59, 15, 15);
@@ -203,18 +206,20 @@ function drawLetter_3() {
   ellipse(129.67, 94.33, 15, 15);
 }
 
-function drawLetter_4() {
-  // letter "K" shape 4
-  var x = random(-5, 5);
-  var y = random(-5, 5)
-  return (image(k, x, y));
+// Letter "K" shape 4
+function drawLetter4() {
+  let x = random(-5, 5);
+  let y = random(-5, 5);
+  noTint();
+  image(k1, x, y);
 }
 
-function drawLetter_5(x) {
-  // letter "K" shape 5
+// Letter "K" shape 5
+function drawLetter5(x) {
   if (x > 1) {
-    // create a random numbers between 0 and 1
-    var r = random(0, 1.0);
+    // Create a random numbers between 0 and 1.0
+    let r = random(0, 1.0);
+    stroke(0);
     strokeWeight(5);
     // 95% chance this will happen
     if (r > 0.05) {
@@ -230,69 +235,71 @@ function drawLetter_5(x) {
   }
 }
 
-function drawLetter_6() {
-  // letter "K" shape 6
-  var offset = 0;
-  var easing = 0.05;
+// Letter "K" shape 6
+function drawLetter6() {
+  let offset = 0;
+  let easing = 0.05;
   // Display at full opacity
-  image(k_1, width / 2, height / 2);
-  var dx = (mouseX-k_1.width/2) - offset;
+  image(k2, width / 2, height / 2);
+  let dx = (mouseX-k2.width/2) - offset;
   offset += dx * easing;
   // Display at half opacity
   tint(255, 127);
-  image(k_1, offset, 0);
+  image(k2, offset, 0);
 }
 
-function drawLetter_7() {
-  // letter "K" shape 7
-  // var to set back
-  var back = 100;
-  line(x_1, y_1, x_2, y_2);
-  line(x_3, y_3, x_4, y_4);
-  line(x_5, y_5, x_6, y_6);
-    x_1++; // begin in 80px
-    y_1++; // begin in 94px
-    x_2++; // begin in 107px
-    y_2++; // begin in 274px
-    x_3++; // begin in 80px
-    y_3++; // begin in 180px
-    x_4++; // begin in 130px
-    y_4++; // begin in 115px
-    x_5++; // begin in 80px
-    y_5++; // begin in 180px
-    x_6++; // begin in 135px
-    y_6++; // begin in 274px
-    // condition to set back letter k shape
-  if (y_2 == 400 && y_6 == 400) {
-    x_1 -= back;
-    y_1 -= back;
-    x_2 -= back;
-    y_2 -= back;
-    x_3 -= back;
-    y_3 -= back;
-    x_4 -= back;
-    y_4 -= back;
-    x_5 -= back;
-    y_5 -= back;
-    x_6 -= back;
-    y_6 -= back;
+// Letter "K" shape 7
+function drawLetter7() {
+  // Var to set back
+  let back = 100;
+  stroke(0);
+  strokeWeight(1);
+  line(x[0], y[0], x[1], y[1]);
+  line(x[2], y[2], x[3], y[3]);
+  line(x[4], y[4], x[5], y[5]);
+    x[0]++; // begin in 80px
+    y[0]++; // begin in 94px
+    x[1]++; // begin in 107px
+    y[1]++; // begin in 274px
+    x[2]++; // begin in 80px
+    y[2]++; // begin in 180px
+    x[3]++; // begin in 130px
+    y[3]++; // begin in 115px
+    x[4]++; // begin in 80px
+    y[4]++; // begin in 180px
+    x[5]++; // begin in 135px
+    y[5]++; // begin in 274px
+    // Condition to set back letter k shape
+  if (y[1] == 400 && y[5] == 400) {
+    x[0] -= back;
+    y[0] -= back;
+    x[1] -= back;
+    y[1] -= back;
+    x[2] -= back;
+    y[2] -= back;
+    x[3] -= back;
+    y[3] -= back;
+    x[4] -= back;
+    y[4] -= back;
+    x[5] -= back;
+    y[5] -= back;
   }
 }
 
-function drawLetter_8() {
-  // letter "K" shape 8
-  var counter1;
-  var counter2;
-  var counter3;
+// Letter "K" shape 8
+function drawLetter8() {
+  let counter1;
+  let counter2;
+  let counter3;
   fill(255);
   noStroke();
-  // vertical triangles
+  // Vertical triangles
   for (counter1 = 0; counter1 < 170; counter1 += 3) {
     triangle(89, 125 + counter1, 107, 144 + counter1, 126, 125 + counter1);
-    // right top triangles
+    // Right top triangles
     for (counter2 = 62; counter2 > 0; counter2 -= 3) {
       triangle(169 - counter2, 122 + counter2, 166 - counter2, 148 + counter2, 192 - counter2, 150 + counter2);
-      // right bottom triangles
+      // Right bottom triangles
       for (counter3 = 62; counter3 > 0; counter3 -= 3) {
         triangle(109 + counter3, 234 + counter3, 108 + counter3, 208 + counter3, 134 + counter3, 207 + counter3);
       }
@@ -300,8 +307,8 @@ function drawLetter_8() {
   }
 }
 
-function drawLetter_9() {
-  // letter "K" shape 8
+// Letter "K" shape 8
+function drawLetter9() {
   // I used translate() function instead of reset all coordinates
   fill(255, 150);
   beginShape();
@@ -355,47 +362,48 @@ function drawLetter_9() {
   line(129.67, 94.33, 109.67, 74.33);
 }
 
-function drawLetter_10(position_x, position_y, size_x, size_y, repet) {
-  // loop, var repet count how many times run the loop
-  for (var i = 0; i < repet; i++) {
-    // it works with module operator
-    // image on the top-center position
+function drawLetter10(positionX, positionY, sizeX, sizeY, repet) {
+  // Loop, var repet count how many times run the loop
+  for (let i = 0; i < repet; i++) {
+    // It works with module operator
+    // Image on the top-center position
     if (i % repet == 1) {
-      image(k_2, position_x + i , position_y, size_x, size_y);
+      image(k3, positionX + i , positionY, sizeX, sizeY);
     }
-    // image on the left
+    // Image on the left
     else if (i % repet == 3) {
-      image(k_2, position_x - i - 70, position_y + i + 50, size_x, size_y);
+      image(k3, positionX - i - 70, positionY + i + 50, sizeX, sizeY);
     }
-    // image on the right
+    // Image on the right
     else if (i % repet == 5) {
-      image(k_2, position_x + i + 70, position_y + i + 50, size_x, size_y);
+      image(k3, positionX + i + 70, positionY + i + 50, sizeX, sizeY);
     }
-    // penultimate image
+    // Penultimate image
     else if (i % repet == 7) {
-      image(k_2, position_x, position_y + i + 100, size_x, size_y);
+      image(k3, positionX, positionY + i + 100, sizeX, sizeY);
     }
-    // image on the bottom position
+    // Image on the bottom position
     else if (i % repet == 9) {
-      image(k_2, position_x, position_y + i + 200, size_x, size_y);
+      image(k3, positionX, positionY + i + 200, sizeX, sizeY);
     }
   }
 }
 
-function drawLetter_11() {
+function drawLetter11() {
   fill("#E23D23");
   textSize(300);
-  text(letterK_1, width / 2, 300);
+  text(letterK1, width / 2, 300);
 }
 
-function drawLetter_12() {
+function drawLetter12() {
   fill("#ED225D");
   textSize(200);
-  text(letterK_2, width / 2, 300);
+  text(letterK2, width / 2, 300);
 }
 
 function keyTyped() {
-    // conditions... if letter q - s is pressed, active the corresponding state
+    // conditions... if letter q - s is pressed, 
+    // active the corresponding state
   if (key == 'q' || key == 'Q') {
     state = 1;
   } else if (key == 'w' || key == 'W') {
